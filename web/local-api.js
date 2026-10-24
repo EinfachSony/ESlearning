@@ -54,12 +54,15 @@ const rawApi=async(url,b)=>{await window.gramaticaReady;const u=new URL(url,loca
 // A single result event prevents sounds being duplicated by redraws or resume.
 window.gramaticaApi=async(url,b)=>{
  await window.gramaticaReady;const previousLevel=window.RPG.level(p.xp);const out=await rawApi(url,b);const a=window.RewardAudio;if(!a)return out;const path=new URL(url,location.origin).pathname;
+ try{
  if(path==='/api/check'){a.result(out.verdict!=='wrong',{...out.audio,events:out.events,hint:!!b?.hint_used});const milestone=out.events.find(x=>x.startsWith('Lernmeilenstein:'));if(milestone)a.announce(milestone);}
  if(path==='/api/theory'&&out.xp_gained){a.reward(out.chapter_complete?'unlock':'theory');if(out.level_up)a.reward('level');}
  if(path==='/api/game-action'&&out.audio_claimed)a.reward('goal');
  if(path==='/api/adventure/talent')a.reward('unlock');
  if(path==='/api/adventure/check'){const r=out.run,f=r.feedback;a.result(f.correct,{...f.audio,hard:['boss','exam','forge'].includes(r.kind),events:f.events,hint:!!r.hintText});if(r.phase==='complete'){a.advance(1);if(r.reward.first||r.reward.xp||r.reward.improved)a.reward(r.kind==='boss'?'boss':r.kind==='exam'?'legendary':'series');else a.reward('series');if(r.reward.levelUp)a.reward('level');}else a.advance(r.correct/r.total);}
  if(path==='/api/sprint'&&window.RPG.level(p.xp)>previousLevel)a.reward('level');
- if(out.stats)a.anticipateXP(out.stats.xp);return out;
+ if(out.stats)a.anticipateXP(out.stats.xp);
+ }catch(error){console.warn('ESlearning: Audiofeedback konnte nicht abgespielt werden.',error.message);}
+ return out;
 };
 })();
