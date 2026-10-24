@@ -257,7 +257,7 @@ async function renderTopic(id) {
   view = "topic";
   if (!overview) overview = await api.get("/api/overview");
   const t = overview.topics.find((x) => x.id === id);
-  ruleStep=0; app.innerHTML = ruleCard(t, false); wireRule(t,false,renderHome);
+  ruleStep=Math.max(0,theoryParts(t).findIndex(x=>!(t.theory_done||[]).includes(x.key))); app.innerHTML = ruleCard(t, false); wireRule(t,false,renderHome);
   window.scrollTo(0, 0);
 }
 
@@ -290,7 +290,7 @@ async function startSession(topic) {
   if (data.intro) {
     view = "intro";
     const t = overview.topics.find((x) => x.id === data.intro);
-    ruleStep=0; app.innerHTML = ruleCard(t, true); wireRule(t,true,renderHome);
+    ruleStep=Math.max(0,theoryParts(t).findIndex(x=>!(t.theory_done||[]).includes(x.key))); app.innerHTML = ruleCard(t, true); wireRule(t,true,renderHome);
   } else {
     renderQuestion();
   }
