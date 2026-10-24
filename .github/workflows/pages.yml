@@ -42,6 +42,11 @@ jobs:
           node --check web/adventure-ui.js
           node scripts/verify_learning.cjs web
           node scripts/verify_adventure.cjs web
+          node --check web/sound-score.js
+          node --check web/sound-worker.js
+          node --check web/reward-audio.js
+          node scripts/verify_reward_audio.cjs web
+          node scripts/verify_audio_learning.cjs web
           touch web/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

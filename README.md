@@ -23,3 +23,23 @@ Gespräche haben mehrere explizit akzeptierte Formulierungen, einschließlich op
 Erstabschlüsse der Reise geben XP, Gold, einen Talentpunkt und ein festes Erinnerungsstück. Sechs Talente gewähren zusätzliche Schutzpunkte, langsameres Audio oder einen ersten Tipp ohne Sternenabzug. Wiederholungen können die Bestwertung verbessern; Reise-Erstbelohnungen werden nicht doppelt vergeben. Trainingsbelohnungen sind je Spielart einmal pro Tag verfügbar. Eingebundene Grammatikaufgaben aktualisieren zugleich die bestehende Wiederholungsplanung. Aktive Runde, Sammlung, Ausrüstung und Talente werden mit dem bestehenden Fortschritt lokal gespeichert und exportiert.
 
 Prüfungen: node scripts/verify_learning.cjs web und node scripts/verify_adventure.cjs web. Der Pages-Workflow führt beide aus und erzeugt die neuen Dialogaufnahmen mit derselben männlichen argentinischen Neuralstimme.
+
+## Advanced Audio Rewards
+
+Original procedural fantasy score: warm crystal/bell transients, plucked harp, soft additive horns, flute/pads and tuned percussion. All notes and waveforms are authored here; no third-party samples, copied melodies or additional runtime packages. D major / B minor, 80 BPM, 24 kHz stereo PCM. Existing male es-AR-TomasNeural WAV recordings and their padded tails remain unchanged.
+
+- `web/sound-score.js`: deterministic composition and additive PCM renderer, shared by browser, worker and signal tests.
+- `web/sound-worker.js`: prepares frequently used effects and five 24-second stems outside the UI thread.
+- `web/reward-audio.js`: single Web Audio graph, cached buffers, gain ramps, compression, bounded effect crossfades, priority/coalescing, speech ducking and lifecycle.
+- `web/reward-audio.css`: accessible native-dialog controls and reduced-motion treatment.
+- `web/local-api.js`: factual result events and persistent, unique learning milestone claims; adventure answers emit once. No reward is replayed by rendering/resuming.
+
+Open “♫ Klang” in the header. Master, music, effects, voice, dynamic music, combos, haptics, sensory mode and intensity persist under `eslearning.audio.v1`. Klangserie persists within the tab session under `eslearning.combo`; an error reduces it by two rather than erasing it. Existing XP, theory and SRS remain in `gramatica.progress.v1`. Optional audio preferences are device-specific; the existing progress export preserves factual audio-learning milestone history.
+
+Effects start from prepared AudioBuffers. One foreground effect and at most one short retiring crossfade are allowed; an important reward replaces less important pending rewards. Fanfare requests within 240 ms coalesce. Speech ducks music to 12% and effects to 6%; major rewards wait until speech ends. No fanfare backlog. Music starts all five looping stems at one AudioContext time, adds layers at 20/40/60/80% and resolves through the completion cue. Hidden tabs pause voice, drop pending cues, stop music and suspend the context; a fresh gesture resumes audio. Autoplay always requires browser permission/user interaction. Mute and gain changes use smoothing.
+
+Small, medium, large and legendary cues span approximately 0.17–0.5 / 0.7–1.6 / 2.4–3.4 / 5.4–6.4 seconds. Combo milestones develop a shared motif at 5, 10, 15 and 20. Rare cues use actual distinct two-sentence exercises (50), 100 exercises at Leitner box 4+, all exercises of a grammar topic at box 4+, or a correct unaided recall at least seven days after its last correct recall. These are exercise-based measures, not claims of 100 unique vocabulary words or certified CEFR proficiency. Long-term measurement begins with this release and does not invent older timestamps.
+
+Haptics are opt-in through navigator.vibrate and unavailable on some browsers, including many iOS browsers. Reduced-motion preference defaults to sensory mode; sensory mode suppresses music, haptics and confetti. Test previews let users calibrate volume with their own headphones; no code can guarantee the loudness of external hardware.
+
+Additional checks: `node scripts/verify_reward_audio.cjs web` (PCM energy, peaks, tails, 100 answers, interruption, bounded overlap, music, voice, settings) and `node scripts/verify_audio_learning.cjs web` (unique factual milestones, seven-day recall, resume and adventure event deduplication). Browser/manual device and headphone listening remains necessary for subjective timbre and hardware-specific behavior.

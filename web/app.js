@@ -38,16 +38,7 @@ const KIND_LABEL = { cloze: "Lücke füllen", choice: "Auswählen", order: "Satz
 
 // ---------- Vorlesen (Web Speech API) ----------
 
-let esVoice = null;
-function loadVoice() {
-  const voices = speechSynthesis.getVoices();
-  esVoice = voices.find((v) => v.lang === "es-AR") || voices.find((v) => /^es-(UY|CL|PE|CO|MX|US)/i.test(v.lang)) || voices.find((v) => v.lang.startsWith("es")) || null;
-}
-if ("speechSynthesis" in window) {
-  loadVoice();
-  speechSynthesis.onvoiceschanged = loadVoice;
-}
-// Google-Stimme (vorab erzeugte Dateien in audio/), Browser-Stimme als Rückfall.
+// Pre-generated male Argentine Neural recordings; no browser voice fallback.
 const VOICE_SAMPLE = "¡Hola! Vamos a practicar español."; // auch in main.rs, damit vorab vertont
 settings.set("voice", "male");
 let googleTts = true;
@@ -61,9 +52,9 @@ function primeSpeech(text) {
 function speak(text, rate=1) {
  const url=window.gramaticaAudio(text);if(!url){toast('Für diesen Satz fehlt noch die Aufnahme.');return;}
  const next=audioPool.get(text)||new Audio(url);if(audio===next&&!audio.paused){audio.playbackRate=rate;return;}
- if(audio)audio.pause();audio=next;audio.preload='auto';audio.currentTime=0;audio.playbackRate=rate;
- audio.onerror=()=>toast('Aufnahme konnte nicht geladen werden. Bitte erneut versuchen.');
- audio.play().catch(e=>{if(e.name!=='AbortError')toast('Tippe auf den Lautsprecher, um die Aufnahme zu starten.');});
+ if(audio)audio.pause();audio=next;window.RewardAudio?.speech(audio);audio.preload='auto';audio.currentTime=0;audio.playbackRate=rate;
+ audio.onerror=()=>{window.RewardAudio?.speechEnd();toast('Aufnahme konnte nicht geladen werden. Bitte erneut versuchen.');};
+ audio.play().catch(e=>{window.RewardAudio?.speechEnd();if(e.name!=='AbortError')toast('Tippe auf den Lautsprecher, um die Aufnahme zu starten.');});
 }
 
 // ---------- Kopfzeile ----------
@@ -79,12 +70,14 @@ function updateHud(stats) {
   $("#goal-ring").style.strokeDashoffset = String(97.4 * (1 - frac));
   if (lastToday !== null && lastToday < stats.daily_goal && stats.today_xp >= stats.daily_goal) {
     confetti(120);
+    window.RewardAudio?.reward("goal");
     toast("🎯 Tagesziel erreicht! ¡Enhorabuena!");
   }
   lastToday = stats.today_xp;
 }
 
 function confetti(n = 80) {
+  if (window.RewardAudio?.settings.sensory || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const box = $("#confetti");
   const colors = ["#c8452c", "#f2b134", "#2f8f5b", "#3b82f6", "#e46a4f"];
   for (let i = 0; i < n; i++) {
@@ -133,6 +126,7 @@ function stars(mastery) {
 
 async function renderHome() {
   view = "home";
+  window.RewardAudio?.lesson(false);
   overview = await api.get("/api/overview");
   const { stats, topics, recommended } = overview;
   updateHud(stats);
@@ -254,6 +248,7 @@ function wireRule(t,intro,onBack){
 }
 
 async function renderTopic(id) {
+  window.RewardAudio?.lesson(false);
   view = "topic";
   if (!overview) overview = await api.get("/api/overview");
   const t = overview.topics.find((x) => x.id === id);
@@ -335,6 +330,7 @@ function wireAccents(input) {
 }
 
 function renderQuestion() {
+  window.RewardAudio?.lesson(true, S.done.size / S.total);
   view = "practice";
   const it = S.queue[S.idx];
   S.phase = "ask";
@@ -479,8 +475,9 @@ async function submit() {
     S.combo++;
     S.bestCombo = Math.max(S.bestCombo, S.combo);
   } else {
-    S.combo = 0;
+    S.combo = Math.max(0, S.combo - 2);
   }
+  window.RewardAudio?.advance((S.done.size + (correctNow(res.verdict) && !S.done.has(it.id) ? 1 : 0)) / S.total);
   S.xp += res.xp_gained;
   updateHud(res.stats);
   const combo = $("#combo");
@@ -593,6 +590,7 @@ function next() {
 
 function renderSummary() {
   view = "summary";
+  window.RewardAudio?.advance(1); window.RewardAudio?.reward("series"); window.RewardAudio?.lesson(false);
   const n = S.firstTry.size;
   const right = [...S.firstTry.values()].filter(Boolean).length;
   const acc = n ? Math.round((right / n) * 100) : 0;
@@ -656,6 +654,7 @@ let verbs = null;
 let SP = null;
 
 async function renderSprint() {
+  window.RewardAudio?.lesson(false);
   view = "sprint-setup";
   if (!verbs) verbs = await api.get("/api/verbs");
   const chosen = settings.get("sprintGroups", GROUPS);
@@ -683,6 +682,7 @@ async function renderSprint() {
 }
 
 function startSprint(pool) {
+  window.RewardAudio?.lesson(true,0);
   view = "sprint";
   SP = { pool, score: 0, left: 60, cur: null, misses: [], timer: null, last: null };
   app.innerHTML = `
@@ -748,6 +748,8 @@ function sprintAnswer() {
       if (flash.textContent === text) flash.textContent = `${text} – ${notes[0]}`;
     });
   }
+  window.RewardAudio?.result(flash.classList.contains("ok"));
+  window.RewardAudio?.advance(1-SP.left/60);
   $("#score").textContent = SP.score;
   nextVerb();
 }
@@ -755,6 +757,7 @@ function sprintAnswer() {
 async function endSprint() {
   clearInterval(SP.timer);
   view = "sprint-end";
+  window.RewardAudio?.lesson(false); window.RewardAudio?.reward("series");
   const res = await api.post("/api/sprint", { score: SP.score });
   updateHud(res.stats);
   if (res.new_record) confetti(120);
