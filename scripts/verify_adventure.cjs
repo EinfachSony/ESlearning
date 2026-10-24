@@ -23,7 +23,7 @@ async function solve(id,topic){let run=(await api('/start',{id,topic})).run;whil
  r=(await api('/start',{id:'buenos-aires-boss'})).run;assert.equal(r.maxHearts,4);assert.equal(new Set(saved.adventure.active.questions.map(q=>q.audioText)).size,3,'Boss phases must use distinct answers');
  for(let n=0;n<4;n++){r=(await api('/check',{run:r.id,answer:'wrong answer'})).run;assert.equal(r.index,0);if(n<3)r=(await next(r)).run;}
  assert.equal(r.phase,'failed');assert(!saved.adventure.clears['buenos-aires-boss']);
- r=await solve('buenos-aires-boss');assert.equal(r.reward.xp,120);assert.equal(r.reward.points,1);assert((await api('')).regions[1].open);
+ r=await solve('buenos-aires-boss');assert.equal(r.reward.xp,120);assert(r.reward.levelUp);assert(r.reward.level>=2);assert.equal(r.reward.points,1);assert((await api('')).regions[1].open);
  await api('/equip',{id:'buenos-aires-boss'});assert.equal((await api('')).equipped,'buenos-aires-boss');
  await assert.rejects(()=>api('/equip',{id:'fake'}));
  const data=JSON.parse(fs.readFileSync(path.join(root,'adventure.json')));
