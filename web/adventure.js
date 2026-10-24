@@ -34,7 +34,7 @@ window.Adventure={training,api(p,c,data,path,b,h){h={...h};const a=state(p);
  let reply=correct?'¡Muy bien! Seguimos.':'Probá otra vez. Podés hacerlo.';
  if(correct){r.correct++;if(q.branch==='drink'){r.context.drink=/caf[eé]/i.test(input)?'coffee':'water';if(r.context.drink==='coffee'){r.questions[2]=authored(infoFor(r,data).coffee);reply='¡Dale! Un café para vos.';}else reply='¡Dale! Un agua para vos.';}if(r.index===r.questions.length-1)finish(p,c,data,r,h);else r.phase='feedback';}
  else{r.mistakes++;r.hearts--;r.phase=r.hearts>0?'feedback':'failed';}
- r.feedback={correct,accent:correct&&!exact,expected:q.answers[0],explain:q.explain||'',reply,xp_gained:learning?.xp_gained||0,events:learning?.events||[]};h.save();return {run:publicRun(r),stats:h.stats()};
+ r.feedback={correct,accent:correct&&!exact,expected:q.branch==='drink'&&r.context.drink==='coffee'?q.answers.find(x=>/café/i.test(x)):q.answers[0],explain:q.explain||'',reply,xp_gained:learning?.xp_gained||0,events:learning?.events||[]};h.save();return {run:publicRun(r),stats:h.stats()};
 }};
 function infoFor(r,data){return data.regions.find(x=>r.mission===x.id+'-talk');}
 })();

@@ -12,7 +12,7 @@ async function solve(id,topic){let run=(await api('/start',{id,topic})).run;whil
  let r=(await api('/start',{id:'buenos-aires-talk'})).run;
  r=(await api('/check',{run:r.id,answer:'Yo soy Sony.'})).run;
  await assert.rejects(()=>api('/check',{run:r.id,answer:'Soy Sony.'}),/bereits/);
- r=(await next(r)).run;r=(await api('/check',{run:r.id,answer:'Quiero un café, por favor.'})).run;r=(await next(r)).run;
+ r=(await next(r)).run;r=(await api('/check',{run:r.id,answer:'Quiero un café, por favor.'})).run;assert(r.feedback.expected.includes('café'));assert(window.gramaticaAudio(r.feedback.expected));r=(await next(r)).run;
  assert(r.question.prompt.includes('Milch'),'Coffee order must branch');
  assert.equal((await api('/resume',{})).run.id,r.id);
  r=(await api('/check',{run:r.id,answer:'Un café con leche, por favor.'})).run;

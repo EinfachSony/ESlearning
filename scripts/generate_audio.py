@@ -19,6 +19,7 @@ def visit(node):
  if isinstance(node,dict):
   if node.get('spoken'):texts.add(node['spoken'])
   if node.get('answers'):texts.add(node['answers'][0])
+  if node.get('branch')=='drink':texts.add(next(a for a in node['answers'] if 'café' in a.lower()))
   for value in node.values():visit(value)
  elif isinstance(node,list):
   for value in node:visit(value)
