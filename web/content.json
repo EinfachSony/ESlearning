@@ -1919,8 +1919,8 @@
       "title": "Regelmäßige Verben auf -ar",
       "title_es": "hablar, trabajar …",
       "summary": "yo hablo, vos hablás, él habla, nosotros hablamos, ustedes hablan.",
-      "explanation": "<h4>hablar</h4><table><tr><td>yo</td><td>hablo</td></tr><tr><td>vos</td><td>hablás</td></tr><tr><td>él/ella/usted</td><td>habla</td></tr><tr><td>nosotros</td><td>hablamos</td></tr><tr><td>ellos/ellas/ustedes</td><td>hablan</td></tr></table>",
-      "details": "<p>Vos betont die letzte Silbe: hablás, comés, vivís. Ustedes steht für ihr und Sie (Plural). Bei nosotros: hablamos, comemos, vivimos.</p>",
+      "explanation": "<table><tr><th>Person</th><th>hablar</th></tr><tr><td>yo</td><td>hablo</td></tr><tr><td>vos</td><td>hablás</td></tr><tr><td>él / ella / usted</td><td>habla</td></tr><tr><td>nosotros / nosotras</td><td>hablamos</td></tr><tr><td>ustedes</td><td>hablan</td></tr><tr><td>ellos / ellas</td><td>hablan</td></tr></table><p>Infinitivendung <b>-ar</b> abschneiden, Personalendung anhängen. Häufige Verben: trabajar, estudiar, escuchar, comprar, tomar, cantar, bailar, viajar, cenar, desayunar, limpiar, buscar.</p>",
+      "details": "<h4>So konjugierst du</h4><ol><li>Infinitiv-Endung -ar abschneiden: hablar → habl-.</li><li>Personalendung anhängen: yo -o, vos -ás, él/ella/usted -a, nosotros -amos, ustedes und ellos/ellas -an.</li></ol><p>Bis auf yo (-o) enthalten alle Endungen ein a – das erkennst du am Infinitiv -ar.</p><h4>Betonung</h4><p>Hablo, habla, hablan: Betonung auf dem Stamm. Hablás und hablamos: Betonung auf der Endung. Bei vos wird die letzte Silbe betont und -ás braucht den Akzent. Ustedes benutzt dieselbe Verbform wie ellos/ellas.</p><h4>Wofür das Präsens?</h4><ul><li>Was jetzt passiert: Ahora estudio.</li><li>Gewohnheiten: Los sábados limpio la casa.</li><li>Feste Pläne: Mañana trabajo.</li></ul><h4>Häufige -ar-Verben</h4><p>hablar (sprechen), trabajar (arbeiten), estudiar (lernen), escuchar (hören), comprar (kaufen), tomar (nehmen/trinken), cantar (singen), bailar (tanzen), viajar (reisen), cenar (zu Abend essen), desayunar (frühstücken), llamar (anrufen), buscar (suchen), necesitar (brauchen), llegar (ankommen).</p><h4>Typische Fehler</h4><ul><li>Infinitiv stehen lassen: Yo hablar ✗ → Yo hablo.</li><li>Bei vos falsche Endung oder fehlender Akzent: ¿Vos trabaja? ✗ → ¿Vos trabajás?</li><li>Ustedes braucht -an: Ustedes hablás ✗ → Ustedes hablan. Usted und ustedes benutzen die dritte Person.</li><li>Mis amigos y yo = wir → -amos.</li></ul><p class=\"memo\">Sprich die Formen laut im Rhythmus: hablo – hablás – habla – hablamos – hablan. Merke dir die beiden Bedeutungen von hablan: ihr und sie.</p>",
       "items": [
         {
           "id": "ar-ar-01",
@@ -2384,19 +2384,64 @@
       ],
       "theory_parts": [
         {
-          "title": "hablar",
-          "html": "<h4>hablar</h4><table><tr><td>yo</td><td>hablo</td></tr><tr><td>vos</td><td>hablás</td></tr><tr><td>él/ella/usted</td><td>habla</td></tr></table>",
-          "key": "22ee538b175ecc3f"
-        },
-        {
-          "title": "hablar",
-          "html": "<table><tr><td>nosotros</td><td>hablamos</td></tr><tr><td>ellos/ellas/ustedes</td><td>hablan</td></tr></table>",
-          "key": "98f6a895d7f5323e"
+          "title": "Grundlagen",
+          "html": "<table><tr><th>Person</th><th>hablar</th></tr><tr><td>yo</td><td>hablo</td></tr><tr><td>vos</td><td>hablás</td></tr><tr><td>él / ella / usted</td><td>habla</td></tr></table>",
+          "key": "50a223e2d1fd91e3"
         },
         {
           "title": "Grundlagen",
-          "html": "<p>Vos betont die letzte Silbe: hablás, comés, vivís. Ustedes steht für ihr und Sie (Plural). Bei nosotros: hablamos, comemos, vivimos.</p>",
-          "key": "4a32385ef3d15dc8"
+          "html": "<table><tr><th>Person</th><th>hablar</th></tr><tr><td>nosotros / nosotras</td><td>hablamos</td></tr><tr><td>ustedes</td><td>hablan</td></tr><tr><td>ellos / ellas</td><td>hablan</td></tr></table>",
+          "key": "d3f2c624c09156ae"
+        },
+        {
+          "title": "Grundlagen",
+          "html": "<p>Infinitivendung <b>-ar</b> abschneiden, Personalendung anhängen. Häufige Verben: trabajar, estudiar, escuchar, comprar, tomar, cantar, bailar, viajar, cenar, desayunar, limpiar, buscar.</p>",
+          "key": "919ba2e045edfccd"
+        },
+        {
+          "title": "So konjugierst du",
+          "html": "<h4>So konjugierst du</h4><ol><li>Infinitiv-Endung -ar abschneiden: hablar → habl-.</li><li>Personalendung anhängen: yo -o, vos -ás, él/ella/usted -a, nosotros -amos, ustedes und ellos/ellas -an.</li></ol>",
+          "key": "6c195ad17cfb322f"
+        },
+        {
+          "title": "So konjugierst du",
+          "html": "<p>Bis auf yo (-o) enthalten alle Endungen ein a – das erkennst du am Infinitiv -ar.</p>",
+          "key": "0512c343ac1003bd"
+        },
+        {
+          "title": "Betonung",
+          "html": "<h4>Betonung</h4><p>Hablo, habla, hablan: Betonung auf dem Stamm. Hablás und hablamos: Betonung auf der Endung. Bei vos wird die letzte Silbe betont und -ás braucht den Akzent. Ustedes benutzt dieselbe Verbform wie ellos/ellas.</p>",
+          "key": "865c4e2313030e68"
+        },
+        {
+          "title": "Wofür das Präsens?",
+          "html": "<h4>Wofür das Präsens?</h4><ul><li>Was jetzt passiert: Ahora estudio.</li><li>Gewohnheiten: Los sábados limpio la casa.</li></ul>",
+          "key": "dcb2be59d0acbcab"
+        },
+        {
+          "title": "Wofür das Präsens?",
+          "html": "<ul><li>Feste Pläne: Mañana trabajo.</li></ul>",
+          "key": "54f4786a151dc077"
+        },
+        {
+          "title": "Häufige -ar-Verben",
+          "html": "<h4>Häufige -ar-Verben</h4><p>hablar (sprechen), trabajar (arbeiten), estudiar (lernen), escuchar (hören), comprar (kaufen), tomar (nehmen/trinken), cantar (singen), bailar (tanzen), viajar (reisen), cenar (zu Abend essen), desayunar (frühstücken), llamar (anrufen), buscar (suchen), necesitar (brauchen), llegar (ankommen).</p>",
+          "key": "dca47f61bab75c2d"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<h4>Typische Fehler</h4><ul><li>Infinitiv stehen lassen: Yo hablar ✗ → Yo hablo.</li><li>Bei vos falsche Endung oder fehlender Akzent: ¿Vos trabaja? ✗ → ¿Vos trabajás?</li></ul>",
+          "key": "4d30b8ee681b68b2"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<ul><li>Ustedes braucht -an: Ustedes hablás ✗ → Ustedes hablan. Usted und ustedes benutzen die dritte Person.</li><li>Mis amigos y yo = wir → -amos.</li></ul>",
+          "key": "22d101952590a716"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<p class=\"memo\">Sprich die Formen laut im Rhythmus: hablo – hablás – habla – hablamos – hablan. Merke dir die beiden Bedeutungen von hablan: ihr und sie.</p>",
+          "key": "d95c516184d7f578"
         }
       ]
     },
@@ -2405,8 +2450,8 @@
       "title": "Regelmäßige Verben auf -er / -ir",
       "title_es": "comer, vivir …",
       "summary": "Vos: comés / vivís. Nosotros: comemos / vivimos. Ustedes: comen / viven.",
-      "explanation": "<h4>comer</h4><table><tr><td>yo</td><td>como</td></tr><tr><td>vos</td><td>comés</td></tr><tr><td>él/ella/usted</td><td>come</td></tr><tr><td>nosotros</td><td>comemos</td></tr><tr><td>ellos/ellas/ustedes</td><td>comen</td></tr></table><h4>vivir</h4><table><tr><td>yo</td><td>vivo</td></tr><tr><td>vos</td><td>vivís</td></tr><tr><td>él/ella/usted</td><td>vive</td></tr><tr><td>nosotros</td><td>vivimos</td></tr><tr><td>ellos/ellas/ustedes</td><td>viven</td></tr></table>",
-      "details": "<p>Vos betont die letzte Silbe: hablás, comés, vivís. Ustedes steht für ihr und Sie (Plural). Bei nosotros: hablamos, comemos, vivimos.</p>",
+      "explanation": "<table><tr><th>Person</th><th>comer</th><th>vivir</th></tr><tr><td>yo</td><td>como</td><td>vivo</td></tr><tr><td>vos</td><td>comés</td><td>vivís</td></tr><tr><td>él / ella / usted</td><td>come</td><td>vive</td></tr><tr><td>nosotros / nosotras</td><td>comemos</td><td>vivimos</td></tr><tr><td>ustedes</td><td>comen</td><td>viven</td></tr><tr><td>ellos / ellas</td><td>comen</td><td>viven</td></tr></table><p>-er: beber, leer, aprender, comprender, correr. -ir: escribir, abrir, recibir, compartir.</p>",
+      "details": "<h4>-er und -ir im Vergleich</h4><p>Beide Gruppen sind fast gleich: yo -o, él/ella/usted -e und ellos/ellas/ustedes -en. Unterschiede gibt es bei vos und nosotros. Dort erscheint der Vokal des Infinitivs:</p><table><tr><th>Person</th><th>comer</th><th>vivir</th></tr><tr><td>vos</td><td>comés</td><td>vivís</td></tr><tr><td>nosotros</td><td>comemos</td><td>vivimos</td></tr></table><h4>Besonderheiten</h4><ul><li>leer: Stamm le- plus Endung ergibt lee, leemos, leen mit doppeltem e. Bei vos: leés.</li><li>ver: veo bei yo mit zusätzlichem e. Bei vos heißt es ves ohne Akzent, weil es nur eine Silbe ist.</li><li>Viele -er/-ir-Verben haben einen Stammwechsel oder eine besondere yo-Form. Diese stehen in eigenen Lektionen.</li></ul><h4>Häufige Verben</h4><p>-er: comer (essen), beber (trinken), leer (lesen), aprender (lernen), comprender (verstehen), correr (laufen), vender (verkaufen).</p><p>-ir: vivir (wohnen/leben), escribir (schreiben), abrir (öffnen), recibir (bekommen), compartir (teilen), subir (hinaufgehen).</p><h4>Typische Fehler</h4><ul><li>vivemos ✗ → vivimos, denn vivir endet auf -ir.</li><li>comimos ✗ für wir essen → comemos. Comimos ist eine Vergangenheitsform.</li><li>Vos comís ✗ → Vos comés, weil comer auf -er endet. Vos vivés ✗ → Vos vivís.</li></ul><p class=\"memo\">Bei vos und nosotros verrät der Infinitiv die Endung: comer → comés, comemos; vivir → vivís, vivimos. Bei ustedes benutzen beide Gruppen -en.</p>",
       "items": [
         {
           "id": "ar-erir-01",
@@ -2860,29 +2905,64 @@
       ],
       "theory_parts": [
         {
-          "title": "comer",
-          "html": "<h4>comer</h4><table><tr><td>yo</td><td>como</td></tr><tr><td>vos</td><td>comés</td></tr><tr><td>él/ella/usted</td><td>come</td></tr></table>",
-          "key": "4348bc078111719a"
-        },
-        {
-          "title": "comer",
-          "html": "<table><tr><td>nosotros</td><td>comemos</td></tr><tr><td>ellos/ellas/ustedes</td><td>comen</td></tr></table>",
-          "key": "1c81a7082a5c8020"
-        },
-        {
-          "title": "vivir",
-          "html": "<h4>vivir</h4><table><tr><td>yo</td><td>vivo</td></tr><tr><td>vos</td><td>vivís</td></tr><tr><td>él/ella/usted</td><td>vive</td></tr></table>",
-          "key": "932832f80e15ee48"
-        },
-        {
-          "title": "vivir",
-          "html": "<table><tr><td>nosotros</td><td>vivimos</td></tr><tr><td>ellos/ellas/ustedes</td><td>viven</td></tr></table>",
-          "key": "3ec47e9b7a570d0c"
+          "title": "Grundlagen",
+          "html": "<table><tr><th>Person</th><th>comer</th><th>vivir</th></tr><tr><td>yo</td><td>como</td><td>vivo</td></tr><tr><td>vos</td><td>comés</td><td>vivís</td></tr><tr><td>él / ella / usted</td><td>come</td><td>vive</td></tr></table>",
+          "key": "8ca684d40a178f67"
         },
         {
           "title": "Grundlagen",
-          "html": "<p>Vos betont die letzte Silbe: hablás, comés, vivís. Ustedes steht für ihr und Sie (Plural). Bei nosotros: hablamos, comemos, vivimos.</p>",
-          "key": "4a32385ef3d15dc8"
+          "html": "<table><tr><th>Person</th><th>comer</th><th>vivir</th></tr><tr><td>nosotros / nosotras</td><td>comemos</td><td>vivimos</td></tr><tr><td>ustedes</td><td>comen</td><td>viven</td></tr><tr><td>ellos / ellas</td><td>comen</td><td>viven</td></tr></table>",
+          "key": "2c316feb2178d3b2"
+        },
+        {
+          "title": "Grundlagen",
+          "html": "<p>-er: beber, leer, aprender, comprender, correr. -ir: escribir, abrir, recibir, compartir.</p>",
+          "key": "0a0d487352fa1b18"
+        },
+        {
+          "title": "-er und -ir im Vergleich",
+          "html": "<h4>-er und -ir im Vergleich</h4><p>Beide Gruppen sind fast gleich: yo -o, él/ella/usted -e und ellos/ellas/ustedes -en. Unterschiede gibt es bei vos und nosotros. Dort erscheint der Vokal des Infinitivs:</p>",
+          "key": "3c306cf3e1e23344"
+        },
+        {
+          "title": "-er und -ir im Vergleich",
+          "html": "<table><tr><th>Person</th><th>comer</th><th>vivir</th></tr><tr><td>vos</td><td>comés</td><td>vivís</td></tr><tr><td>nosotros</td><td>comemos</td><td>vivimos</td></tr></table>",
+          "key": "e406dbf0c09f5663"
+        },
+        {
+          "title": "Besonderheiten",
+          "html": "<h4>Besonderheiten</h4><ul><li>leer: Stamm le- plus Endung ergibt lee, leemos, leen mit doppeltem e. Bei vos: leés.</li><li>ver: veo bei yo mit zusätzlichem e. Bei vos heißt es ves ohne Akzent, weil es nur eine Silbe ist.</li></ul>",
+          "key": "0981f164db00e78c"
+        },
+        {
+          "title": "Besonderheiten",
+          "html": "<ul><li>Viele -er/-ir-Verben haben einen Stammwechsel oder eine besondere yo-Form. Diese stehen in eigenen Lektionen.</li></ul>",
+          "key": "94490625e7686fa2"
+        },
+        {
+          "title": "Häufige Verben",
+          "html": "<h4>Häufige Verben</h4><p>-er: comer (essen), beber (trinken), leer (lesen), aprender (lernen), comprender (verstehen), correr (laufen), vender (verkaufen).</p>",
+          "key": "c04851583db0d497"
+        },
+        {
+          "title": "Häufige Verben",
+          "html": "<p>-ir: vivir (wohnen/leben), escribir (schreiben), abrir (öffnen), recibir (bekommen), compartir (teilen), subir (hinaufgehen).</p>",
+          "key": "a7d1c84a4e96811c"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<h4>Typische Fehler</h4><ul><li>vivemos ✗ → vivimos, denn vivir endet auf -ir.</li><li>comimos ✗ für wir essen → comemos. Comimos ist eine Vergangenheitsform.</li></ul>",
+          "key": "88b92ce088c2f4c1"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<ul><li>Vos comís ✗ → Vos comés, weil comer auf -er endet. Vos vivés ✗ → Vos vivís.</li></ul>",
+          "key": "300611ab839ca502"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<p class=\"memo\">Bei vos und nosotros verrät der Infinitiv die Endung: comer → comés, comemos; vivir → vivís, vivimos. Bei ustedes benutzen beide Gruppen -en.</p>",
+          "key": "4f2d5b85a5992df8"
         }
       ]
     },
@@ -4747,8 +4827,8 @@
       "title": "Stammwechselverben",
       "title_es": "quiero, puedo, pido",
       "summary": "Stammwechsel bei yo, él/ella und ellos/ustedes. Vos: querés, podés, pedís.",
-      "explanation": "<table><tr><th>Person</th><th>querer</th><th>poder</th><th>pedir</th></tr><tr><td>yo</td><td>quiero</td><td>puedo</td><td>pido</td></tr><tr><td>vos</td><td>querés</td><td>podés</td><td>pedís</td></tr><tr><td>él/ella/usted</td><td>quiere</td><td>puede</td><td>pide</td></tr><tr><td>nosotros</td><td>queremos</td><td>podemos</td><td>pedimos</td></tr><tr><td>ellos/ellas/ustedes</td><td>quieren</td><td>pueden</td><td>piden</td></tr></table><p>Beim argentinischen vos fällt der Stammwechsel im Präsens weg. Nosotros bleibt ebenfalls ohne Stammwechsel.</p>",
-      "details": "<h4>Stammwechsel im argentinischen Präsens</h4><p>yo quiero, él quiere, ustedes quieren – aber vos querés und nosotros queremos. Ebenso: vos pensás, empezás, preferís, cerrás, podés, dormís, volvés, encontrás, jugás, pedís, repetís, servís.</p>",
+      "explanation": "<table><tr><th>Person</th><th>e → ie</th><th>o → ue</th><th>e → i</th></tr><tr><td>yo</td><td>quiero</td><td>puedo</td><td>pido</td></tr><tr><td>vos</td><td>querés</td><td>podés</td><td>pedís</td></tr><tr><td>él/ella/usted</td><td>quiere</td><td>puede</td><td>pide</td></tr><tr><td>nosotros/nosotras</td><td>queremos</td><td>podemos</td><td>pedimos</td></tr><tr><td>ellos/ellas/ustedes</td><td>quieren</td><td>pueden</td><td>piden</td></tr></table><p>Bei diesen Verben verändert sich der Stamm in den stammbetonten Formen. Bei vos und nosotros ist die Endung betont; der Stamm bleibt dort unverändert.</p><ul><li>e → ie: querer, pensar, empezar, preferir, cerrar.</li><li>o → ue: poder, dormir, volver, costar, encontrar. u → ue: jugar.</li><li>e → i: pedir, repetir, servir.</li></ul>",
+      "details": "<h4>Warum ändert sich der Stamm?</h4><p>Bei diesen Verben wechselt der Vokal, wenn der Stamm betont ist: quiero, quiere, quieren. Bei vos und nosotros liegt die Betonung auf der Endung: querés, queremos. Deshalb tritt dort kein Wechsel auf. Ustedes hat die gleiche stammbetonte Form wie ellos/ellas.</p><table><tr><th>Stamm betont: Wechsel</th><th>Endung betont: kein Wechsel</th></tr><tr><td>quiero, quiere, quieren</td><td>querés, queremos</td></tr><tr><td>puedo, puede, pueden</td><td>podés, podemos</td></tr><tr><td>pido, pide, piden</td><td>pedís, pedimos</td></tr></table><h4>Die drei Typen und jugar</h4><ul><li>e → ie: querer, pensar, empezar, cerrar, preferir, entender, despertarse.</li><li>o → ue: poder, dormir, volver, costar, encontrar, contar, acostarse; llover heißt in der üblichen unpersönlichen Form llueve.</li><li>u → ue: jugar → juego, juega, juegan; aber vos jugás und nosotros jugamos.</li><li>e → i: bei -ir-Verben wie pedir, repetir, servir, vestirse, seguir.</li></ul><p>Ob ein Verb einen Stammwechsel hat, sieht man dem Infinitiv nicht an: comer wechselt nicht, querer schon. Im Wörterbuch steht oft querer (ie), poder (ue), pedir (i).</p><h4>Bei reflexiven Verben</h4><p>acostarse → me acuesto; vestirse → me visto; despertarse → me despierto. Die Reflexivpronomen kommen zusätzlich zur veränderten Verbform. Bei vos: te acostás, te vestís, te despertás.</p><h4>Typische Fehler</h4><ul><li>Wechsel vergessen: quero, podo, jugo ✗ → quiero, puedo, juego.</li><li>Wechsel bei nosotros: queiremos, duermimos ✗ → queremos, dormimos. Ebenso vos: querés, dormís.</li><li>Bei mehreren e im Stamm wechselt das letzte: empezar → empiezo, preferir → prefiero.</li></ul><p class=\"memo\">Markiere die veränderten Formen in der Tabelle. Für argentinisches Spanisch gilt bei diesen Präsensformen: yo, él/ella/usted und ellos/ellas/ustedes wechseln; vos und nosotros behalten den Stamm. Übe beides zusammen: yo quiero – vos querés.</p>",
       "items": [
         {
           "id": "ar-stem-01",
@@ -5223,23 +5303,73 @@
       "theory_parts": [
         {
           "title": "Grundlagen",
-          "html": "<table><tr><th>Person</th><th>querer</th><th>poder</th><th>pedir</th></tr><tr><td>yo</td><td>quiero</td><td>puedo</td><td>pido</td></tr><tr><td>vos</td><td>querés</td><td>podés</td><td>pedís</td></tr><tr><td>él/ella/usted</td><td>quiere</td><td>puede</td><td>pide</td></tr></table>",
-          "key": "4aef32fa538d0db4"
+          "html": "<table><tr><th>Person</th><th>e → ie</th><th>o → ue</th><th>e → i</th></tr><tr><td>yo</td><td>quiero</td><td>puedo</td><td>pido</td></tr><tr><td>vos</td><td>querés</td><td>podés</td><td>pedís</td></tr><tr><td>él/ella/usted</td><td>quiere</td><td>puede</td><td>pide</td></tr></table>",
+          "key": "f562f464d0a20ee1"
         },
         {
           "title": "Grundlagen",
-          "html": "<table><tr><th>Person</th><th>querer</th><th>poder</th><th>pedir</th></tr><tr><td>nosotros</td><td>queremos</td><td>podemos</td><td>pedimos</td></tr><tr><td>ellos/ellas/ustedes</td><td>quieren</td><td>pueden</td><td>piden</td></tr></table>",
-          "key": "26270f5dc2293f2b"
+          "html": "<table><tr><th>Person</th><th>e → ie</th><th>o → ue</th><th>e → i</th></tr><tr><td>nosotros/nosotras</td><td>queremos</td><td>podemos</td><td>pedimos</td></tr><tr><td>ellos/ellas/ustedes</td><td>quieren</td><td>pueden</td><td>piden</td></tr></table>",
+          "key": "210ad95ca937be3a"
         },
         {
           "title": "Grundlagen",
-          "html": "<p>Beim argentinischen vos fällt der Stammwechsel im Präsens weg. Nosotros bleibt ebenfalls ohne Stammwechsel.</p>",
-          "key": "fbd6891b011533d5"
+          "html": "<p>Bei diesen Verben verändert sich der Stamm in den stammbetonten Formen. Bei vos und nosotros ist die Endung betont; der Stamm bleibt dort unverändert.</p>",
+          "key": "c4d948fa26bd4d39"
         },
         {
-          "title": "Stammwechsel im argentinischen Präsens",
-          "html": "<h4>Stammwechsel im argentinischen Präsens</h4><p>yo quiero, él quiere, ustedes quieren – aber vos querés und nosotros queremos. Ebenso: vos pensás, empezás, preferís, cerrás, podés, dormís, volvés, encontrás, jugás, pedís, repetís, servís.</p>",
-          "key": "2f613829cd5ac209"
+          "title": "Grundlagen",
+          "html": "<ul><li>e → ie: querer, pensar, empezar, preferir, cerrar.</li><li>o → ue: poder, dormir, volver, costar, encontrar. u → ue: jugar.</li></ul>",
+          "key": "e6614a63fc2e2830"
+        },
+        {
+          "title": "Grundlagen",
+          "html": "<ul><li>e → i: pedir, repetir, servir.</li></ul>",
+          "key": "7ce65186ba30aeb5"
+        },
+        {
+          "title": "Warum ändert sich der Stamm?",
+          "html": "<h4>Warum ändert sich der Stamm?</h4><p>Bei diesen Verben wechselt der Vokal, wenn der Stamm betont ist: quiero, quiere, quieren. Bei vos und nosotros liegt die Betonung auf der Endung: querés, queremos. Deshalb tritt dort kein Wechsel auf. Ustedes hat die gleiche stammbetonte Form wie ellos/ellas.</p>",
+          "key": "1dd8bd058c6d8ee5"
+        },
+        {
+          "title": "Warum ändert sich der Stamm?",
+          "html": "<table><tr><th>Stamm betont: Wechsel</th><th>Endung betont: kein Wechsel</th></tr><tr><td>quiero, quiere, quieren</td><td>querés, queremos</td></tr><tr><td>puedo, puede, pueden</td><td>podés, podemos</td></tr><tr><td>pido, pide, piden</td><td>pedís, pedimos</td></tr></table>",
+          "key": "6df451569866e5d5"
+        },
+        {
+          "title": "Die drei Typen und jugar",
+          "html": "<h4>Die drei Typen und jugar</h4><ul><li>e → ie: querer, pensar, empezar, cerrar, preferir, entender, despertarse.</li><li>o → ue: poder, dormir, volver, costar, encontrar, contar, acostarse; llover heißt in der üblichen unpersönlichen Form llueve.</li></ul>",
+          "key": "f5bd251fa9a0dd29"
+        },
+        {
+          "title": "Die drei Typen und jugar",
+          "html": "<ul><li>u → ue: jugar → juego, juega, juegan; aber vos jugás und nosotros jugamos.</li><li>e → i: bei -ir-Verben wie pedir, repetir, servir, vestirse, seguir.</li></ul>",
+          "key": "e721724a79a1ddb4"
+        },
+        {
+          "title": "Die drei Typen und jugar",
+          "html": "<p>Ob ein Verb einen Stammwechsel hat, sieht man dem Infinitiv nicht an: comer wechselt nicht, querer schon. Im Wörterbuch steht oft querer (ie), poder (ue), pedir (i).</p>",
+          "key": "8489ab04219e271b"
+        },
+        {
+          "title": "Bei reflexiven Verben",
+          "html": "<h4>Bei reflexiven Verben</h4><p>acostarse → me acuesto; vestirse → me visto; despertarse → me despierto. Die Reflexivpronomen kommen zusätzlich zur veränderten Verbform. Bei vos: te acostás, te vestís, te despertás.</p>",
+          "key": "de5c36eab5039b05"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<h4>Typische Fehler</h4><ul><li>Wechsel vergessen: quero, podo, jugo ✗ → quiero, puedo, juego.</li><li>Wechsel bei nosotros: queiremos, duermimos ✗ → queremos, dormimos. Ebenso vos: querés, dormís.</li></ul>",
+          "key": "fbfc5ea96fc9c018"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<ul><li>Bei mehreren e im Stamm wechselt das letzte: empezar → empiezo, preferir → prefiero.</li></ul>",
+          "key": "d118350fb0f815fc"
+        },
+        {
+          "title": "Typische Fehler",
+          "html": "<p class=\"memo\">Markiere die veränderten Formen in der Tabelle. Für argentinisches Spanisch gilt bei diesen Präsensformen: yo, él/ella/usted und ellos/ellas/ustedes wechseln; vos und nosotros behalten den Stamm. Übe beides zusammen: yo quiero – vos querés.</p>",
+          "key": "5945d586ed0df1a3"
         }
       ]
     },

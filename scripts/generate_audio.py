@@ -1,5 +1,5 @@
 """Generate complete Argentine male recordings. Never silently substitute another voice."""
-import asyncio,hashlib,json,re,subprocess,sys
+import asyncio,hashlib,json,re,subprocess,sys,shutil
 from pathlib import Path
 import edge_tts
 ROOT=Path(sys.argv[1] if len(sys.argv)>1 else 'web')
@@ -26,7 +26,7 @@ async def generate(text,hash):
    try:
     await asyncio.wait_for(edge_tts.Communicate(text,VOICE,rate='-5%').save(str(temp)),timeout=45)
     # Decode without another lossy encoding and add a quiet tail for complete sentence endings.
-    subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(temp),'-af','apad=pad_dur=0.4','-c:a','pcm_s16le',str(padded)],check=True)
+    subprocess.run([shutil.which('ffmpeg') or __import__('imageio_ffmpeg').get_ffmpeg_exe(),'-hide_banner','-loglevel','error','-y','-i',str(temp),'-af','apad=pad_dur=0.4','-c:a','pcm_s16le',str(padded)],check=True)
     padded.replace(target);temp.unlink(missing_ok=True)
     print('Generated',hash,flush=True);return
    except Exception:
