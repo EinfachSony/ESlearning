@@ -464,11 +464,13 @@
           "id": "ar-scene-art-1",
           "type": "translate",
           "exerciseMode": "mission",
-          "prompt": "die Blume → die Blumen der Bleistift → die Bleistifte",
+          "prompt": "Die Blumen sind schön. Die Bleistifte sind neu.",
           "answers": [
-            "la flor → las flores. el lápiz → los lápices"
+            "Las flores son bonitas. Los lápices son nuevos.",
+            "Las flores son lindas. Los lápices son nuevos.",
+            "Las flores son hermosas. Los lápices son nuevos."
           ],
-          "explain": "Schreibe beide Sätze. Endet auf Konsonant → -es. -z wird im Plural zu -ces."
+          "explain": "Im Plural: la flor → las flores und el lápiz → los lápices. Auch die Adjektive stimmen mit Genus und Zahl überein."
         }
       ],
       "theory_parts": [

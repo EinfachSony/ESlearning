@@ -4,7 +4,7 @@ const root=path.resolve(process.argv[2]||'web');let saved;const window={};const 
 for(const name of ['rpg.js','adventure.js','local-api.js'])vm.runInNewContext(fs.readFileSync(path.join(root,name),'utf8'),ctx);
 const api=(name,body)=>window.gramaticaApi('/api/adventure'+name,body);
 const next=run=>api('/next',{run:run.id});
-async function solve(id,topic){let run=(await api('/start',{id,topic})).run;while(run.phase==='ask'){const q=saved.adventure.active.questions[run.index];assert(!('answers' in run.question));assert(window.gramaticaAudio(q.audioText),'Missing reply audio');if(q.spoken)assert(window.gramaticaAudio(q.spoken),'Missing NPC audio');if(q.mode==='gaps')assert((q.gapped.match(/____/g)||[]).length>=2);run=(await api('/check',{run:run.id,answer:q.answers[0]})).run;if(run.phase==='feedback')run=(await next(run)).run;}assert.equal(run.phase,'complete');return run;}
+async function solve(id,topic){let run=(await api('/start',{id,topic})).run;while(run.phase==='ask'){const q=saved.adventure.active.questions[run.index];assert(!('answers' in run.question));assert(window.gramaticaAudio(q.audioText),'Missing reply audio');if(q.spoken)assert(window.gramaticaAudio(q.spoken),'Missing NPC audio');if(q.mode==='mission')assert(!q.answers[0].includes('→'));if(q.mode==='gaps')assert((q.gapped.match(/____/g)||[]).length>=2);run=(await api('/check',{run:run.id,answer:q.answers[0]})).run;if(run.phase==='feedback')run=(await next(run)).run;}assert.equal(run.phase,'complete');return run;}
 (async()=>{
  await window.gramaticaReady;
  await assert.rejects(()=>api('/start',{id:'buenos-aires-boss'}),/zuerst/);
@@ -20,7 +20,7 @@ async function solve(id,topic){let run=(await api('/start',{id,topic})).run;whil
  await assert.rejects(()=>api('/check',{run:r.id,answer:'Quiero un café con leche.'}),/bereits/);
  const replay=await solve('buenos-aires-talk');assert.equal(replay.reward.xp,0);assert.equal(replay.reward.gold,0);assert.equal(replay.reward.points,0);
  await api('/talent',{id:'grammar-guard'});assert.equal((await api('')).points,0);
- r=(await api('/start',{id:'buenos-aires-boss'})).run;assert.equal(r.maxHearts,4);
+ r=(await api('/start',{id:'buenos-aires-boss'})).run;assert.equal(r.maxHearts,4);assert.equal(new Set(saved.adventure.active.questions.map(q=>q.audioText)).size,3,'Boss phases must use distinct answers');
  for(let n=0;n<4;n++){r=(await api('/check',{run:r.id,answer:'wrong answer'})).run;assert.equal(r.index,0);if(n<3)r=(await next(r)).run;}
  assert.equal(r.phase,'failed');assert(!saved.adventure.clears['buenos-aires-boss']);
  r=await solve('buenos-aires-boss');assert.equal(r.reward.xp,120);assert.equal(r.reward.points,1);assert((await api('')).regions[1].open);
