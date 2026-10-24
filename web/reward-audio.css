@@ -3,3 +3,5 @@
 @media(prefers-reduced-motion:reduce){.audio-status:not(:empty){animation:none!important}}
 
 #audio-panel .muted{color:#71634f}
+
+.audio-profile{display:grid;gap:8px;margin-top:18px}.audio-profile select{width:100%;padding:10px;border:1px solid #a58e68;border-radius:8px;background:#fffaf1;color:#372a1c}.audio-credit{margin-top:18px;font-size:.85rem}.audio-credit a{color:#735018}#audio-panel .audio-credit p{line-height:1.7}

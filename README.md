@@ -24,7 +24,22 @@ Erstabschlüsse der Reise geben XP, Gold, einen Talentpunkt und ein festes Erinn
 
 Prüfungen: node scripts/verify_learning.cjs web und node scripts/verify_adventure.cjs web. Der Pages-Workflow führt beide aus und erzeugt die neuen Dialogaufnahmen mit derselben männlichen argentinischen Neuralstimme.
 
-## Advanced Audio Rewards
+## WoW original sound profile (default)
+
+The default profile uses four original World of Warcraft recordings selected from the user-provided Wowhead sound database. Audio copyright remains with Blizzard Entertainment; ESlearning is independent and makes no claim of ownership or affiliation. Exact source pages, public download URLs and immutable SHA-256 hashes are in `web/wow-sounds.json`.
+
+- Correct answers, theory parts and combo feedback: LootCoinSmall, 0.635 seconds, reduced gain.
+- Completed series and daily goals: QUESTCOMPLETED, 8.348 seconds.
+- Player level up: LEVELUP, 4.365 seconds.
+- Boss clears and major achievements: UI_Alert_AchievementGained, 5.187 seconds.
+
+Original pitch and complete tails are preserved. Combos in this profile use restrained gain emphasis at milestones rather than synthetic melodies or pitch-shifted game recordings. Wrong answers and anticipation cues remain visual without the former synthesized tones. The original synthetic background music is off by default, including a one-time migration of older audio settings. It can be enabled explicitly. All volume, speech-ducking, reward priority and haptic controls remain available.
+
+`scripts/prepare_wow_audio.py` retrieves the four public Wowhead downloads at build time, verifies hashes and creates lossless decoded PCM WAV alternatives with the existing FFmpeg dependency. Build failure preserves the preceding deployment. `web/wow-sound-bank.js` preloads same-origin WAV files and decodes each once into the shared AudioContext; the browser has no runtime dependency on Wowhead CORS or third-party availability. An unavailable clip is reported in the audio panel and does not silently revert to the disliked synthesized profile. No original binary recordings are committed to Git; the build prepares them in the Pages artifact.
+
+Open “♫ Klang” to select World of Warcraft / synthetic Fantasy and preview coin, quest, level and achievement sounds. Sound credit and individual source links are available in that dialog. `node scripts/verify_wow_audio.cjs web` checks source hashes, non-silent PCM, full clip durations, preload/decode caching, cue mapping and load failure.
+
+## Alternative synthetic Fantasy audio profile
 
 Original procedural fantasy score: warm crystal/bell transients, plucked harp, soft additive horns, flute/pads and tuned percussion. All notes and waveforms are authored here; no third-party samples, copied melodies or additional runtime packages. D major / B minor, 80 BPM, 24 kHz stereo PCM. Existing male es-AR-TomasNeural WAV recordings and their padded tails remain unchanged.
 

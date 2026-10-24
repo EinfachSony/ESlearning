@@ -1,0 +1,33 @@
+{
+  "credit": "World of Warcraft audio © Blizzard Entertainment. Files referenced from Wowhead; ESlearning is not affiliated with Blizzard or Wowhead.",
+  "sounds": {
+    "coin": {
+      "name": "LootCoinSmall",
+      "source": "https://www.wowhead.com/de/sound=120/lootwindowcoinsound",
+      "url": "https://wow.zamimg.com/sound-ids/live/dede/132/567428/LootCoinSmall.ogg",
+      "file": "coin.ogg",
+      "sha256": "3fd57bcd4de27e789ba3bb1e5d1b42978c140059222cd18ae856be9d32215373"
+    },
+    "quest": {
+      "name": "QUESTCOMPLETED",
+      "source": "https://www.wowhead.com/de/sound=619/questcompleted",
+      "url": "https://wow.zamimg.com/sound-ids/wrath/dede/143/567439/iQuestComplete.ogg",
+      "file": "quest.ogg",
+      "sha256": "db3029104e909ad1a0c99c5a32fc6c88f91c150c2922a3d0c0d9b4b8d9aaa880"
+    },
+    "level": {
+      "name": "LEVELUP",
+      "source": "https://www.wowhead.com/de/sound=888/levelup",
+      "url": "https://wow.zamimg.com/sound-ids/live/dede/249/569593/LevelUp.ogg",
+      "file": "level.ogg",
+      "sha256": "9b1f1e3da305e28133dc86cd4b162e3ea797a653ce647879511a1804846b4409"
+    },
+    "achievement": {
+      "name": "UI_Alert_AchievementGained",
+      "source": "https://www.wowhead.com/de/sound=12891/ui-alert-achievementgained",
+      "url": "https://wow.zamimg.com/sound-ids/live/dede/55/569143/AchievmentSound1.ogg",
+      "file": "achievement.ogg",
+      "sha256": "8494d51c69bfc1eadd1774a9be89d2a0600122e5bd2a7fff2a08c58184bb6d7d"
+    }
+  }
+}

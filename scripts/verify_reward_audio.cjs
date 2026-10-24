@@ -8,7 +8,7 @@ for(const kind of ['ui','error','correct','difficult','theory','mastery','goal',
  if(k==='legendary')assert(s.duration>=4&&s.duration<=8);if(k==='boss')assert(s.duration>=4);if(k==='correct')assert(s.duration<=.5);
 }
 const stems=Array.from({length:5},(_,i)=>score.render(score.stem(i)));assert(stems.every(s=>s.left.length===stems[0].left.length));let musicPeak=0;for(let i=0;i<stems[0].left.length;i++){const sum=stems.reduce((v,s)=>v+s.left[i],0);musicPeak=Math.max(musicPeak,Math.abs(sum));}assert(musicPeak<.9);
-let time=0,sourceCount=0,sourcePeak=0,contexts=0,timers=new Map(),timerId=0;const allNodes=[],events={},store=new Map();
+let time=0,sourceCount=0,sourcePeak=0,contexts=0,timers=new Map(),timerId=0;const allNodes=[],events={},store=new Map([['eslearning.audio.v1',JSON.stringify({profile:'fantasy',dynamic:true})]]);
 class Param{constructor(){this.value=1;}cancelScheduledValues(){}setTargetAtTime(v){this.value=v;}}
 class Node{constructor(){this.gain=new Param();allNodes.push(this);}connect(){return arguments[0];}disconnect(){}start(){sourceCount++;sourcePeak=Math.max(sourcePeak,sourceCount);}stop(){if(!this.stopped){this.stopped=true;sourceCount--;this.onended?.();}}}
 class Context{constructor(){contexts++;this.currentTime=0;this.state='running';this.destination=new Node();}createGain(){return new Node();}createDynamicsCompressor(){const n=new Node();for(const x of ['threshold','knee','ratio','attack','release'])n[x]=new Param();return n;}createBuffer(c,l,r){return{duration:l/r,copyToChannel(){}};}createBufferSource(){return new Node();}createMediaElementSource(){return new Node();}async resume(){this.state='running';}suspend(){this.state='suspended';}}
