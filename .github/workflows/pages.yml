@@ -13,25 +13,32 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Retrieve original audio assets
-        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          repository: CRewrie/Sony_learning
-          ref: 113568b908544e74448c98977aea13ee1fd32063
-          path: original
-          sparse-checkout: audio
-      - name: Prepare static site
+          python-version: '3.12'
+      - name: Restore Argentine voice recordings
+        uses: actions/cache@v4
+        with:
+          path: web/audio/es-AR-TomasNeural
+          key: tomas-neural-v1-${{ hashFiles('web/content.json', 'scripts/generate_audio.py') }}
+          restore-keys: tomas-neural-v1-
+      - name: Install voice generator
+        run: python -m pip install edge-tts==7.3.1
+      - name: Generate complete male Argentine recordings
+        run: python scripts/generate_audio.py web
+      - name: Verify JavaScript
         run: |
-          cp -R original/audio web/audio
+          node --check web/app.js
+          node --check web/local-api.js
+          node --check web/rpg.js
           touch web/.nojekyll
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web

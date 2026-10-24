@@ -1,1 +1,652 @@
-[{"inf": "hablar", "de": "sprechen", "forms": ["hablo", "hablas", "habla", "hablamos", "habláis", "hablan"], "group": "regelmäßig"}, {"inf": "trabajar", "de": "arbeiten", "forms": ["trabajo", "trabajas", "trabaja", "trabajamos", "trabajáis", "trabajan"], "group": "regelmäßig"}, {"inf": "estudiar", "de": "lernen, studieren", "forms": ["estudio", "estudias", "estudia", "estudiamos", "estudiáis", "estudian"], "group": "regelmäßig"}, {"inf": "escuchar", "de": "hören", "forms": ["escucho", "escuchas", "escucha", "escuchamos", "escucháis", "escuchan"], "group": "regelmäßig"}, {"inf": "comprar", "de": "kaufen", "forms": ["compro", "compras", "compra", "compramos", "compráis", "compran"], "group": "regelmäßig"}, {"inf": "tomar", "de": "nehmen, trinken", "forms": ["tomo", "tomas", "toma", "tomamos", "tomáis", "toman"], "group": "regelmäßig"}, {"inf": "bailar", "de": "tanzen", "forms": ["bailo", "bailas", "baila", "bailamos", "bailáis", "bailan"], "group": "regelmäßig"}, {"inf": "cantar", "de": "singen", "forms": ["canto", "cantas", "canta", "cantamos", "cantáis", "cantan"], "group": "regelmäßig"}, {"inf": "viajar", "de": "reisen", "forms": ["viajo", "viajas", "viaja", "viajamos", "viajáis", "viajan"], "group": "regelmäßig"}, {"inf": "cenar", "de": "zu Abend essen", "forms": ["ceno", "cenas", "cena", "cenamos", "cenáis", "cenan"], "group": "regelmäßig"}, {"inf": "llegar", "de": "ankommen", "forms": ["llego", "llegas", "llega", "llegamos", "llegáis", "llegan"], "group": "regelmäßig"}, {"inf": "necesitar", "de": "brauchen", "forms": ["necesito", "necesitas", "necesita", "necesitamos", "necesitáis", "necesitan"], "group": "regelmäßig"}, {"inf": "comer", "de": "essen", "forms": ["como", "comes", "come", "comemos", "coméis", "comen"], "group": "regelmäßig"}, {"inf": "beber", "de": "trinken", "forms": ["bebo", "bebes", "bebe", "bebemos", "bebéis", "beben"], "group": "regelmäßig"}, {"inf": "leer", "de": "lesen", "forms": ["leo", "lees", "lee", "leemos", "leéis", "leen"], "group": "regelmäßig"}, {"inf": "aprender", "de": "lernen", "forms": ["aprendo", "aprendes", "aprende", "aprendemos", "aprendéis", "aprenden"], "group": "regelmäßig"}, {"inf": "comprender", "de": "verstehen", "forms": ["comprendo", "comprendes", "comprende", "comprendemos", "comprendéis", "comprenden"], "group": "regelmäßig"}, {"inf": "correr", "de": "laufen", "forms": ["corro", "corres", "corre", "corremos", "corréis", "corren"], "group": "regelmäßig"}, {"inf": "vivir", "de": "wohnen, leben", "forms": ["vivo", "vives", "vive", "vivimos", "vivís", "viven"], "group": "regelmäßig"}, {"inf": "escribir", "de": "schreiben", "forms": ["escribo", "escribes", "escribe", "escribimos", "escribís", "escriben"], "group": "regelmäßig"}, {"inf": "abrir", "de": "öffnen", "forms": ["abro", "abres", "abre", "abrimos", "abrís", "abren"], "group": "regelmäßig"}, {"inf": "recibir", "de": "bekommen", "forms": ["recibo", "recibes", "recibe", "recibimos", "recibís", "reciben"], "group": "regelmäßig"}, {"inf": "querer", "de": "wollen, mögen", "forms": ["quiero", "quieres", "quiere", "queremos", "queréis", "quieren"], "group": "Stammwechsel"}, {"inf": "pensar", "de": "denken", "forms": ["pienso", "piensas", "piensa", "pensamos", "pensáis", "piensan"], "group": "Stammwechsel"}, {"inf": "empezar", "de": "anfangen", "forms": ["empiezo", "empiezas", "empieza", "empezamos", "empezáis", "empiezan"], "group": "Stammwechsel"}, {"inf": "preferir", "de": "bevorzugen", "forms": ["prefiero", "prefieres", "prefiere", "preferimos", "preferís", "prefieren"], "group": "Stammwechsel"}, {"inf": "cerrar", "de": "schließen", "forms": ["cierro", "cierras", "cierra", "cerramos", "cerráis", "cierran"], "group": "Stammwechsel"}, {"inf": "poder", "de": "können", "forms": ["puedo", "puedes", "puede", "podemos", "podéis", "pueden"], "group": "Stammwechsel"}, {"inf": "dormir", "de": "schlafen", "forms": ["duermo", "duermes", "duerme", "dormimos", "dormís", "duermen"], "group": "Stammwechsel"}, {"inf": "volver", "de": "zurückkehren", "forms": ["vuelvo", "vuelves", "vuelve", "volvemos", "volvéis", "vuelven"], "group": "Stammwechsel"}, {"inf": "costar", "de": "kosten", "forms": ["cuesto", "cuestas", "cuesta", "costamos", "costáis", "cuestan"], "group": "Stammwechsel"}, {"inf": "encontrar", "de": "finden", "forms": ["encuentro", "encuentras", "encuentra", "encontramos", "encontráis", "encuentran"], "group": "Stammwechsel"}, {"inf": "jugar", "de": "spielen", "forms": ["juego", "juegas", "juega", "jugamos", "jugáis", "juegan"], "group": "Stammwechsel"}, {"inf": "pedir", "de": "bestellen, bitten", "forms": ["pido", "pides", "pide", "pedimos", "pedís", "piden"], "group": "Stammwechsel"}, {"inf": "repetir", "de": "wiederholen", "forms": ["repito", "repites", "repite", "repetimos", "repetís", "repiten"], "group": "Stammwechsel"}, {"inf": "servir", "de": "servieren", "forms": ["sirvo", "sirves", "sirve", "servimos", "servís", "sirven"], "group": "Stammwechsel"}, {"inf": "hacer", "de": "machen", "forms": ["hago", "haces", "hace", "hacemos", "hacéis", "hacen"], "group": "yo-unregelmäßig"}, {"inf": "salir", "de": "ausgehen", "forms": ["salgo", "sales", "sale", "salimos", "salís", "salen"], "group": "yo-unregelmäßig"}, {"inf": "poner", "de": "stellen, legen", "forms": ["pongo", "pones", "pone", "ponemos", "ponéis", "ponen"], "group": "yo-unregelmäßig"}, {"inf": "saber", "de": "wissen", "forms": ["sé", "sabes", "sabe", "sabemos", "sabéis", "saben"], "group": "yo-unregelmäßig"}, {"inf": "conocer", "de": "kennen", "forms": ["conozco", "conoces", "conoce", "conocemos", "conocéis", "conocen"], "group": "yo-unregelmäßig"}, {"inf": "traer", "de": "bringen", "forms": ["traigo", "traes", "trae", "traemos", "traéis", "traen"], "group": "yo-unregelmäßig"}, {"inf": "ver", "de": "sehen", "forms": ["veo", "ves", "ve", "vemos", "veis", "ven"], "group": "yo-unregelmäßig"}, {"inf": "tener", "de": "haben", "forms": ["tengo", "tienes", "tiene", "tenemos", "tenéis", "tienen"], "group": "unregelmäßig"}, {"inf": "venir", "de": "kommen", "forms": ["vengo", "vienes", "viene", "venimos", "venís", "vienen"], "group": "unregelmäßig"}, {"inf": "decir", "de": "sagen", "forms": ["digo", "dices", "dice", "decimos", "decís", "dicen"], "group": "unregelmäßig"}, {"inf": "ser", "de": "sein", "forms": ["soy", "eres", "es", "somos", "sois", "son"], "group": "unregelmäßig"}, {"inf": "estar", "de": "sein, sich befinden", "forms": ["estoy", "estás", "está", "estamos", "estáis", "están"], "group": "unregelmäßig"}, {"inf": "ir", "de": "gehen, fahren", "forms": ["voy", "vas", "va", "vamos", "vais", "van"], "group": "unregelmäßig"}, {"inf": "dar", "de": "geben", "forms": ["doy", "das", "da", "damos", "dais", "dan"], "group": "unregelmäßig"}]
+[
+  {
+    "inf": "hablar",
+    "de": "sprechen",
+    "forms": [
+      "hablo",
+      "hablás",
+      "habla",
+      "hablamos",
+      "hablan",
+      "hablan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "trabajar",
+    "de": "arbeiten",
+    "forms": [
+      "trabajo",
+      "trabajás",
+      "trabaja",
+      "trabajamos",
+      "trabajan",
+      "trabajan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "estudiar",
+    "de": "lernen, studieren",
+    "forms": [
+      "estudio",
+      "estudiás",
+      "estudia",
+      "estudiamos",
+      "estudian",
+      "estudian"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "escuchar",
+    "de": "hören",
+    "forms": [
+      "escucho",
+      "escuchás",
+      "escucha",
+      "escuchamos",
+      "escuchan",
+      "escuchan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "comprar",
+    "de": "kaufen",
+    "forms": [
+      "compro",
+      "comprás",
+      "compra",
+      "compramos",
+      "compran",
+      "compran"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "tomar",
+    "de": "nehmen, trinken",
+    "forms": [
+      "tomo",
+      "tomás",
+      "toma",
+      "tomamos",
+      "toman",
+      "toman"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "bailar",
+    "de": "tanzen",
+    "forms": [
+      "bailo",
+      "bailás",
+      "baila",
+      "bailamos",
+      "bailan",
+      "bailan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "cantar",
+    "de": "singen",
+    "forms": [
+      "canto",
+      "cantás",
+      "canta",
+      "cantamos",
+      "cantan",
+      "cantan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "viajar",
+    "de": "reisen",
+    "forms": [
+      "viajo",
+      "viajás",
+      "viaja",
+      "viajamos",
+      "viajan",
+      "viajan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "cenar",
+    "de": "zu Abend essen",
+    "forms": [
+      "ceno",
+      "cenás",
+      "cena",
+      "cenamos",
+      "cenan",
+      "cenan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "llegar",
+    "de": "ankommen",
+    "forms": [
+      "llego",
+      "llegás",
+      "llega",
+      "llegamos",
+      "llegan",
+      "llegan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "necesitar",
+    "de": "brauchen",
+    "forms": [
+      "necesito",
+      "necesitás",
+      "necesita",
+      "necesitamos",
+      "necesitan",
+      "necesitan"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "comer",
+    "de": "essen",
+    "forms": [
+      "como",
+      "comés",
+      "come",
+      "comemos",
+      "comen",
+      "comen"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "beber",
+    "de": "trinken",
+    "forms": [
+      "bebo",
+      "bebés",
+      "bebe",
+      "bebemos",
+      "beben",
+      "beben"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "leer",
+    "de": "lesen",
+    "forms": [
+      "leo",
+      "leés",
+      "lee",
+      "leemos",
+      "leen",
+      "leen"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "aprender",
+    "de": "lernen",
+    "forms": [
+      "aprendo",
+      "aprendés",
+      "aprende",
+      "aprendemos",
+      "aprenden",
+      "aprenden"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "comprender",
+    "de": "verstehen",
+    "forms": [
+      "comprendo",
+      "comprendés",
+      "comprende",
+      "comprendemos",
+      "comprenden",
+      "comprenden"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "correr",
+    "de": "laufen",
+    "forms": [
+      "corro",
+      "corrés",
+      "corre",
+      "corremos",
+      "corren",
+      "corren"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "vivir",
+    "de": "wohnen, leben",
+    "forms": [
+      "vivo",
+      "vivís",
+      "vive",
+      "vivimos",
+      "viven",
+      "viven"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "escribir",
+    "de": "schreiben",
+    "forms": [
+      "escribo",
+      "escribís",
+      "escribe",
+      "escribimos",
+      "escriben",
+      "escriben"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "abrir",
+    "de": "öffnen",
+    "forms": [
+      "abro",
+      "abrís",
+      "abre",
+      "abrimos",
+      "abren",
+      "abren"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "recibir",
+    "de": "bekommen",
+    "forms": [
+      "recibo",
+      "recibís",
+      "recibe",
+      "recibimos",
+      "reciben",
+      "reciben"
+    ],
+    "group": "regelmäßig"
+  },
+  {
+    "inf": "querer",
+    "de": "wollen, mögen",
+    "forms": [
+      "quiero",
+      "querés",
+      "quiere",
+      "queremos",
+      "quieren",
+      "quieren"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "pensar",
+    "de": "denken",
+    "forms": [
+      "pienso",
+      "pensás",
+      "piensa",
+      "pensamos",
+      "piensan",
+      "piensan"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "empezar",
+    "de": "anfangen",
+    "forms": [
+      "empiezo",
+      "empezás",
+      "empieza",
+      "empezamos",
+      "empiezan",
+      "empiezan"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "preferir",
+    "de": "bevorzugen",
+    "forms": [
+      "prefiero",
+      "preferís",
+      "prefiere",
+      "preferimos",
+      "prefieren",
+      "prefieren"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "cerrar",
+    "de": "schließen",
+    "forms": [
+      "cierro",
+      "cerrás",
+      "cierra",
+      "cerramos",
+      "cierran",
+      "cierran"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "poder",
+    "de": "können",
+    "forms": [
+      "puedo",
+      "podés",
+      "puede",
+      "podemos",
+      "pueden",
+      "pueden"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "dormir",
+    "de": "schlafen",
+    "forms": [
+      "duermo",
+      "dormís",
+      "duerme",
+      "dormimos",
+      "duermen",
+      "duermen"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "volver",
+    "de": "zurückkehren",
+    "forms": [
+      "vuelvo",
+      "volvés",
+      "vuelve",
+      "volvemos",
+      "vuelven",
+      "vuelven"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "costar",
+    "de": "kosten",
+    "forms": [
+      "cuesto",
+      "costás",
+      "cuesta",
+      "costamos",
+      "cuestan",
+      "cuestan"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "encontrar",
+    "de": "finden",
+    "forms": [
+      "encuentro",
+      "encontrás",
+      "encuentra",
+      "encontramos",
+      "encuentran",
+      "encuentran"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "jugar",
+    "de": "spielen",
+    "forms": [
+      "juego",
+      "jugás",
+      "juega",
+      "jugamos",
+      "juegan",
+      "juegan"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "pedir",
+    "de": "bestellen, bitten",
+    "forms": [
+      "pido",
+      "pedís",
+      "pide",
+      "pedimos",
+      "piden",
+      "piden"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "repetir",
+    "de": "wiederholen",
+    "forms": [
+      "repito",
+      "repetís",
+      "repite",
+      "repetimos",
+      "repiten",
+      "repiten"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "servir",
+    "de": "servieren",
+    "forms": [
+      "sirvo",
+      "servís",
+      "sirve",
+      "servimos",
+      "sirven",
+      "sirven"
+    ],
+    "group": "Stammwechsel"
+  },
+  {
+    "inf": "hacer",
+    "de": "machen",
+    "forms": [
+      "hago",
+      "hacés",
+      "hace",
+      "hacemos",
+      "hacen",
+      "hacen"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "salir",
+    "de": "ausgehen",
+    "forms": [
+      "salgo",
+      "salís",
+      "sale",
+      "salimos",
+      "salen",
+      "salen"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "poner",
+    "de": "stellen, legen",
+    "forms": [
+      "pongo",
+      "ponés",
+      "pone",
+      "ponemos",
+      "ponen",
+      "ponen"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "saber",
+    "de": "wissen",
+    "forms": [
+      "sé",
+      "sabés",
+      "sabe",
+      "sabemos",
+      "saben",
+      "saben"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "conocer",
+    "de": "kennen",
+    "forms": [
+      "conozco",
+      "conocés",
+      "conoce",
+      "conocemos",
+      "conocen",
+      "conocen"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "traer",
+    "de": "bringen",
+    "forms": [
+      "traigo",
+      "traés",
+      "trae",
+      "traemos",
+      "traen",
+      "traen"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "ver",
+    "de": "sehen",
+    "forms": [
+      "veo",
+      "ves",
+      "ve",
+      "vemos",
+      "ven",
+      "ven"
+    ],
+    "group": "yo-unregelmäßig"
+  },
+  {
+    "inf": "tener",
+    "de": "haben",
+    "forms": [
+      "tengo",
+      "tenés",
+      "tiene",
+      "tenemos",
+      "tienen",
+      "tienen"
+    ],
+    "group": "unregelmäßig"
+  },
+  {
+    "inf": "venir",
+    "de": "kommen",
+    "forms": [
+      "vengo",
+      "venís",
+      "viene",
+      "venimos",
+      "vienen",
+      "vienen"
+    ],
+    "group": "unregelmäßig"
+  },
+  {
+    "inf": "decir",
+    "de": "sagen",
+    "forms": [
+      "digo",
+      "decís",
+      "dice",
+      "decimos",
+      "dicen",
+      "dicen"
+    ],
+    "group": "unregelmäßig"
+  },
+  {
+    "inf": "ser",
+    "de": "sein",
+    "forms": [
+      "soy",
+      "sos",
+      "es",
+      "somos",
+      "son",
+      "son"
+    ],
+    "group": "unregelmäßig"
+  },
+  {
+    "inf": "estar",
+    "de": "sein, sich befinden",
+    "forms": [
+      "estoy",
+      "estás",
+      "está",
+      "estamos",
+      "están",
+      "están"
+    ],
+    "group": "unregelmäßig"
+  },
+  {
+    "inf": "ir",
+    "de": "gehen, fahren",
+    "forms": [
+      "voy",
+      "vas",
+      "va",
+      "vamos",
+      "van",
+      "van"
+    ],
+    "group": "unregelmäßig"
+  },
+  {
+    "inf": "dar",
+    "de": "geben",
+    "forms": [
+      "doy",
+      "das",
+      "da",
+      "damos",
+      "dan",
+      "dan"
+    ],
+    "group": "unregelmäßig"
+  }
+]

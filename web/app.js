@@ -5,7 +5,7 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 const app = $("#app");
 
-const api = {get: (url) => window.gramaticaApi(url), post: (url, body) => window.gramaticaApi(url, body)};
+const api = { get: (url) => window.gramaticaApi(url), post: (url, body) => window.gramaticaApi(url, body) };
 
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -41,7 +41,7 @@ const KIND_LABEL = { cloze: "Lücke füllen", choice: "Auswählen", order: "Satz
 let esVoice = null;
 function loadVoice() {
   const voices = speechSynthesis.getVoices();
-  esVoice = voices.find((v) => v.lang === "es-ES") || voices.find((v) => v.lang.startsWith("es")) || null;
+  esVoice = voices.find((v) => v.lang === "es-AR") || voices.find((v) => /^es-(UY|CL|PE|CO|MX|US)/i.test(v.lang)) || voices.find((v) => v.lang.startsWith("es")) || null;
 }
 if ("speechSynthesis" in window) {
   loadVoice();
@@ -49,25 +49,21 @@ if ("speechSynthesis" in window) {
 }
 // Google-Stimme (vorab erzeugte Dateien in audio/), Browser-Stimme als Rückfall.
 const VOICE_SAMPLE = "¡Hola! Vamos a practicar español."; // auch in main.rs, damit vorab vertont
-let googleTts = false;
+settings.set("voice", "male");
+let googleTts = true;
 let audio = null;
-function speak(text) {
-  if (audio) audio.pause();
-  if ("speechSynthesis" in window) speechSynthesis.cancel();
-  if (!googleTts) return browserSpeak(text);
-  const voice = settings.get("voice", "female");
-  audio = new Audio(window.gramaticaAudio(text, voice));
-  audio.onerror = () => browserSpeak(text);
-  audio.play().catch((e) => e.name !== "NotAllowedError" && e.name !== "AbortError" && browserSpeak(text));
+const audioPool = new Map();
+function primeSpeech(text) {
+  if (!text || !googleTts || !window.gramaticaAudio(text) || audioPool.has(text)) return;
+  const clip = new Audio(); clip.preload = "auto"; clip.src = window.gramaticaAudio(text);
+  clip.load(); audioPool.set(text, clip);
 }
-function browserSpeak(text) {
-  if (!("speechSynthesis" in window)) return;
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "es-ES";
-  if (esVoice) u.voice = esVoice;
-  u.rate = 0.92;
-  speechSynthesis.speak(u);
+function speak(text) {
+ const url=window.gramaticaAudio(text);if(!url){toast('Für diesen Satz fehlt noch die Aufnahme.');return;}
+ const next=audioPool.get(text)||new Audio(url);if(audio===next&&!audio.paused)return;
+ if(audio)audio.pause();audio=next;audio.preload='auto';audio.currentTime=0;
+ audio.onerror=()=>toast('Aufnahme konnte nicht geladen werden. Bitte erneut versuchen.');
+ audio.play().catch(e=>{if(e.name!=='AbortError')toast('Tippe auf den Lautsprecher, um die Aufnahme zu starten.');});
 }
 
 // ---------- Kopfzeile ----------
@@ -140,11 +136,14 @@ async function renderHome() {
   overview = await api.get("/api/overview");
   const { stats, topics, recommended } = overview;
   updateHud(stats);
+  if (!settings.get("voiceQualityMigrated", false)) { settings.set("voice", "male"); settings.set("voiceQualityMigrated", true); }
   $("#lvl").textContent = stats.level;
   const rec = topics.find((t) => t.id === recommended);
   const started = topics.some((t) => t.seen > 0);
 
-  app.innerHTML = `
+  const game = await api.get("/api/game");
+  applyTheme(game);
+  app.innerHTML = gameHome(game) + `
     <section class="hero">
       <div class="card mix">
         <h2>${started ? "Täglicher Mix" : "¡Bienvenido! Los geht’s"}</h2>
@@ -161,8 +160,8 @@ async function renderHome() {
         <button class="btn big" id="start-mix">${started ? "Mix starten" : "Erste Lektion"} →</button>
       </div>
       <div class="card sprint">
-        <h2>⚡ Verb-Sprint</h2>
-        <p class="muted small">60 Sekunden, so viele Verbformen wie möglich. Bringt Tempo in die Konjugation.</p>
+        <h2>⚡ Trainingsarena</h2>
+        <p class="muted small">60 Sekunden, so viele Verbformen wie möglich. Bis zu 60 XP pro Tag; danach trainierst du weiter für deinen Rekord.</p>
         <div class="chips"><span class="chip">Rekord: ${stats.sprint_best}</span></div>
         <button class="btn ghost" id="start-sprint">Sprint starten</button>
       </div>
@@ -183,13 +182,14 @@ async function renderHome() {
             ${t.seen === 0 && t.id !== recommended ? `<span class="badge new">neu</span>` : ""}
           </div>
           <div class="row"><div class="bar" style="flex:1"><i style="width:${t.mastery}%"></i></div>${stars(t.mastery)}</div>
-          <span class="muted small">${t.seen}/${t.total} gesehen · ${t.mastery}% sicher</span>
+          <span class="muted small">${t.seen}/${t.total} gesehen · ${t.mastery}% sicher · 📖 ${(t.theory_done||[]).length}/${(t.theory_parts||[]).length}</span>
         </button>`
         )
         .join("")}
     </section>
 
-    <div class="footer-settings">
+    <p class="tip">Dein Lernfortschritt wird in diesem Browser gespeichert. Beim Löschen der Website-Daten geht er verloren. Mit einer Sicherung kannst du ihn auf ein anderes Gerät übertragen.</p><div class="actions"><button class="btn ghost" id="export-progress">Fortschritt sichern</button><label class="btn ghost">Sicherung laden<input id="import-progress" type="file" accept="application/json" hidden></label></div>
+    <p class="tip">🇦🇷 Argentinisches Spanisch: vos & ustedes. Standard ist die hochwertige Männerstimme Chirp 3 HD Charon. Passende vorproduzierte Aufnahmen spielen direkt; bei neuen Voseo-Sätzen greift die argentinische Browserstimme, falls dein Gerät sie anbietet.</p><div class="footer-settings">
       <label>Tagesziel
         <select id="goal">
           ${[50, 100, 150, 250, 400].map((g) => `<option value="${g}" ${g === stats.daily_goal ? "selected" : ""}>${g} XP</option>`).join("")}
@@ -198,13 +198,22 @@ async function renderHome() {
       <label><input type="checkbox" id="autospeak" ${settings.get("autoSpeak", true) ? "checked" : ""}> Lösungen vorlesen</label>
       <label ${stats.google_tts ? "" : "hidden"}>Stimme
         <select id="voice">
-          <option value="female" ${settings.get("voice", "female") === "female" ? "selected" : ""}>Frau (Kore)</option>
-          <option value="male" ${settings.get("voice", "female") === "male" ? "selected" : ""}>Mann (Charon)</option>
+          
+          <option value="male" ${settings.get("voice", "male") === "male" ? "selected" : ""}>Tomás · Argentinien · Neural</option>
         </select>
       </label>
       <label><input type="checkbox" id="showde" ${settings.get("showDe", true) ? "checked" : ""}> Übersetzung anzeigen</label>
     </div>`;
 
+  wireGame();
+  $("#export-progress").onclick = () => {
+    const blob = new Blob([localStorage.getItem("gramatica.progress.v1") || "{}"], {type:"application/json"});
+    const a = document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="gramatica-fortschritt.json"; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  };
+  $("#import-progress").onchange = async e => {
+    try { await window.gramaticaImport(await e.target.files[0].text()); await renderHome(); toast("Fortschritt geladen"); }
+    catch { toast("Die Sicherung ist ungültig. Der bisherige Fortschritt bleibt erhalten."); }
+  };
   $("#start-mix").onclick = () => startSession(null);
   $("#start-sprint").onclick = renderSprint;
   app.querySelectorAll("[data-topic]").forEach((b) => (b.onclick = () => renderTopic(b.dataset.topic)));
@@ -219,37 +228,36 @@ async function renderHome() {
 
 // ---------- Regelkarte ----------
 
-function ruleCard(t, intro) {
-  return `
-    <article class="card rule">
-      ${intro ? `<div class="muted small" style="margin-bottom:6px">✨ Neues Thema</div>` : ""}
-      <h2>${esc(t.title)}</h2>
-      <div class="es">${esc(t.title_es)}</div>
-      <div class="summary">${esc(t.summary)}</div>
-      <div class="explanation table-wrap">${t.explanation}</div>
-      ${
-        t.details
-          ? `<details class="more" ${intro ? "" : "open"}>
-               <summary>Ausführlich: Verwendung, Beispiele, typische Fehler, Merkhilfen</summary>
-               <div class="explanation table-wrap">${t.details}</div>
-             </details>`
-          : ""
-      }
-      <p class="tip">💡 Lies die Regel einmal aufmerksam, dann geht’s direkt ans Anwenden. Das Abrufen festigt sie besser als langes Lesen. Bei Fehlern bekommst du die ausführliche Regel automatisch angezeigt.</p>
-      <div class="actions">
-        <button class="btn big" id="go">${intro ? "Los geht’s" : "Dieses Thema üben"} →</button>
-        <button class="btn ghost" id="back">Zurück</button>
-      </div>
-    </article>`;
+let ruleStep = 0;
+function theoryParts(t){return t.theory_parts||[{title:'Grundlagen',html:t.explanation,key:'intro'}];}
+function ruleCard(t,intro){
+ const parts=theoryParts(t);ruleStep=Math.min(ruleStep,parts.length-1);const part=parts[ruleStep],done=(t.theory_done||[]).includes(part.key);
+ return `<article class="card rule"><div class="rpg-eyebrow">📖 AKADEMIE · ${esc(t.title)}</div><h2>${esc(part.title)}</h2>
+ <p class="muted">Teil ${ruleStep+1} von ${parts.length} · ${(t.theory_done||[]).length}/${parts.length} abgeschlossen</p>
+ <div class="bar"><i style="width:${(ruleStep+1)/parts.length*100}%"></i></div>
+ <div class="explanation table-wrap" style="margin:24px 0">${part.html}</div>
+ <p class="theory-reward">${done?'✓ Belohnung bereits erhalten':'✨ Abschließen: +8 XP · +2 Gold'}${ruleStep===parts.length-1?' · Kapitelbonus: +15 XP und +5 Gold bei vollständigem Abschluss':''}</p>
+ <div class="actions">${ruleStep?'<button class="btn ghost" id="rule-prev">← Zurück</button>':''}
+ <button class="btn big" id="rule-complete">${done?(ruleStep<parts.length-1?'Nächster Teil →':'Übungen starten →'):'Gelesen · Belohnung erhalten →'}</button>
+ <button class="btn ghost" id="back">Zur Übersicht</button></div></article>`;
+}
+function wireRule(t,intro,onBack){
+ const draw=()=>{app.innerHTML=ruleCard(t,intro);wireRule(t,intro,onBack);window.scrollTo(0,0);};
+ const prev=$('#rule-prev');if(prev)prev.onclick=()=>{ruleStep--;draw();};$('#back').onclick=onBack;
+ $('#rule-complete').onclick=async()=>{
+ const btn=$('#rule-complete');btn.disabled=true;
+ try{const r=await api.post('/api/theory',{topic:t.id,part:theoryParts(t)[ruleStep].key});t.theory_done=r.done;updateHud(r.stats);
+ if(r.xp_gained){toast(`+${r.xp_gained} XP · +${r.gold_gained} Gold${r.level_up?' · LEVEL '+r.player_level+'!':''}`);confetti(r.level_up?80:20);}
+ if(ruleStep<theoryParts(t).length-1){ruleStep++;draw();}else{ruleStep=0;if(intro)renderQuestion();else startSession(t.id);}
+ }catch(e){btn.disabled=false;toast('Speichern fehlgeschlagen. Bitte erneut versuchen.');}
+ };
 }
 
 async function renderTopic(id) {
   view = "topic";
   if (!overview) overview = await api.get("/api/overview");
   const t = overview.topics.find((x) => x.id === id);
-  app.innerHTML = ruleCard(t, false);
-  $("#go").onclick = () => startSession(id);
-  $("#back").onclick = renderHome;
+  ruleStep=0; app.innerHTML = ruleCard(t, false); wireRule(t,false,renderHome);
   window.scrollTo(0, 0);
 }
 
@@ -282,15 +290,16 @@ async function startSession(topic) {
   if (data.intro) {
     view = "intro";
     const t = overview.topics.find((x) => x.id === data.intro);
-    app.innerHTML = ruleCard(t, true);
-    $("#go").onclick = renderQuestion;
-    $("#back").onclick = renderHome;
+    ruleStep=0; app.innerHTML = ruleCard(t, true); wireRule(t,true,renderHome);
   } else {
     renderQuestion();
   }
 }
 
 function promptHtml(it) {
+ if(it.exerciseMode==='listen')return `<p class="muted">Höre zu und tippe den vollständigen spanischen Satz.</p><button class="btn ghost" id="question-audio">🔊 Satz anhören</button>`;
+ if(it.exerciseMode==='gaps')return `<p class="muted">Ergänze mehrere fehlende Wörter. Tippe den vollständigen Satz.</p><div class="prompt">${esc(it.gapped)}</div><p class="muted">🇩🇪 ${esc(it.prompt)}</p>`;
+ if(it.exerciseMode==='mission')return `<p class="muted">⚔️ Mini-Mission: Formuliere beide Sätze auf Spanisch.</p><div class="prompt">${esc(it.prompt)}</div>`;
   if (it.kind === "order" || it.kind === "translate") {
     return `<div class="muted small">${it.kind === "order" ? "Bilde den spanischen Satz:" : "Übersetze ins Spanische:"}</div>
             <div class="prompt">${esc(it.prompt)}</div>`;
@@ -329,6 +338,7 @@ function renderQuestion() {
   view = "practice";
   const it = S.queue[S.idx];
   S.phase = "ask";
+  primeSpeech(it.audioText);
   S.hintUsed = false;
   S.selected = null;
   S.tray = [];
@@ -356,7 +366,7 @@ function renderQuestion() {
     </div>
     <article class="card" id="qcard">
       <div class="q-meta">
-        <span class="q-type">${KIND_LABEL[it.kind]}</span> · <span>${esc(it.topic_title)}</span>
+        <span class="q-type">${({translate:"Frei übersetzen",gaps:"Mehrere Lücken",listen:"Hörverständnis",mission:"Mini-Mission"})[it.exerciseMode]||KIND_LABEL[it.kind]}</span> · <span>${esc(it.topic_title)}</span>
         ${it.relearn ? `<span class="badge due">Nochmal</span>` : it.is_new ? `<span class="badge new">neu</span>` : ""}
       </div>
       ${promptHtml(it)}
@@ -373,6 +383,7 @@ function renderQuestion() {
 
   $("#quit").onclick = () => (S.done.size ? renderSummary() : renderHome());
   $("#hint").onclick = useHint;
+  if($("#question-audio"))$("#question-audio").onclick=()=>speak(it.audioText);
   $("#submit").onclick = submit;
   const tog = $("#de-toggle");
   if (tog) tog.onclick = () => (tog.parentElement.textContent = "🇩🇪 " + it.de);
@@ -404,7 +415,7 @@ function chooseOption(btn) {
 }
 
 function moveTile(btn) {
-  if (S.phase !== "ask") return;
+  if (S.phase !== "ask" || btn.classList.contains("used")) return;
   const it = S.queue[S.idx];
   const i = Number(btn.dataset.i);
   btn.classList.add("used");
@@ -493,6 +504,7 @@ async function submit() {
   }
 
   showFeedback(it, res, answer);
+  if(res.events?.length) { toast(res.events.join(" · ")); if(res.events.some(x=>x.startsWith("Level"))) confetti(65); }
 }
 
 // Vollständige Regel der Lektion; bei falscher Antwort aufgeklappt.
@@ -592,6 +604,7 @@ function renderSummary() {
 
   app.innerHTML = `
     <article class="card">
+      <div class="quest-note">⚔️ Expedition abgeschlossen. Deine Quests und Belohnungen warten in der Übersicht.</div>
       <div class="summary-head">
         <div class="big-emoji">${emoji}</div>
         <h2>${msg}</h2>
@@ -637,7 +650,7 @@ function renderSummary() {
 
 // ---------- Verb-Sprint ----------
 
-const PERSONS = ["yo", "tú", "él / ella", "nosotros", "vosotros", "ellos / ellas"];
+const PERSONS = ["yo", "vos", "él / ella / usted", "nosotros", "ustedes", "ellos / ellas"];
 const GROUPS = ["regelmäßig", "Stammwechsel", "yo-unregelmäßig", "unregelmäßig"];
 let verbs = null;
 let SP = null;
@@ -648,7 +661,7 @@ async function renderSprint() {
   const chosen = settings.get("sprintGroups", GROUPS);
   app.innerHTML = `
     <article class="card sprint-stage">
-      <h2>⚡ Verb-Sprint</h2>
+      <h2>⚡ Trainingsarena</h2>
       <p class="muted">Konjugiere im Präsens, so schnell du kannst. Richtige Formen bringen Punkte, Fehler kosten nur Zeit.</p>
       <div class="row" style="justify-content:center;margin:14px 0">
         ${GROUPS.map(
@@ -797,8 +810,28 @@ document.querySelector("[data-go=home]").onclick = () => {
 };
 
 // Direkteinstieg per Lesezeichen: #mix, #sprint, #topic=ser
+await window.gramaticaReady;
+applyTheme(await api.get("/api/game"));
 const hash = location.hash.slice(1);
 if (hash === "mix") startSession(null);
 else if (hash === "sprint") renderSprint();
 else if (hash.startsWith("topic=")) renderTopic(hash.slice(6));
 else renderHome();
+
+function applyTheme(g) {
+ document.documentElement.dataset.realm=g.theme;
+ const color=g.rewards.find(r=>r.id===g.theme)?.color||"#e79b52";
+ document.documentElement.style.setProperty("--realm",color);
+}
+function gameHome(g) {
+ const percent=Math.min(100,Math.round((g.xp-g.floor)/(g.next-g.floor)*100));
+ return `<section class="rpg-hero"><div class="rpg-eyebrow">DEINE SPRACHREISE · KAMPAGNE A1 · ARGENTINIEN</div><div class="rpg-character"><div class="rpg-avatar">${g.icon}</div><div><span class="rpg-kicker">SONY · ${esc(g.title)}</span><h1>Dein nächstes Abenteuer<br>beginnt mit einem Satz.</h1></div><div class="rpg-level"><b>${g.level}</b><span>LEVEL</span></div></div><div class="rpg-xp"><div><b>${g.xp-g.floor} / ${g.next-g.floor} XP</b><span> bis Level ${g.level+1}</span></div><div class="rpg-track"><i style="width:${percent}%"></i></div></div><button class="btn" id="rpg-start" style="margin-top:18px">⚔️ Expedition starten →</button><div class="rpg-stats"><span>🪙 <b>${g.gold}</b> Gold</span><span>🔮 <b>${g.mastered}/${g.total}</b> langfristig gefestigt</span><span>🏕️ <b>${g.days}</b> Lerntage</span></div></section>
+ <section class="rpg-section"><div class="rpg-heading"><h2>Dein Questlog</h2><span>Jeden Tag neue Ziele · kein Verlust bei Pausen</span></div><div class="rpg-quests">${g.quests.map(q=>`<article class="rpg-quest"><div class="quest-icon">${q.icon}</div><h3>${q.name}</h3><p>${q.desc}</p><div class="rpg-track"><i style="width:${q.count/q.goal*100}%"></i></div><div class="quest-bottom"><span>${q.count}/${q.goal} · 🪙 ${q.reward}</span><button class="btn ghost" data-claim="${q.id}" ${q.claimed||q.count<q.goal?'disabled':''}>${q.claimed?'Abgeholt':q.count>=q.goal?'Belohnung holen':'In Arbeit'}</button></div></article>`).join('')}</div></section>
+ <details class="rpg-camp"><summary>🏕️ Lager öffnen <span>Erfolge, Titel & Belohnungen</span></summary><h2>Deine Trophäen</h2><div class="rpg-trophies">${g.achievements.map(a=>`<div class="rpg-trophy ${a.unlocked?'earned':''}"><span>${a.icon}</span><b>${a.name}</b><small>${a.desc}</small><em>${a.unlocked?'Freigeschaltet':'🪙 '+a.gold+' Gold'}</em></div>`).join('')}</div><h2>Wähle dein Reich</h2><p class="muted">Gold schaltet dauerhafte Designs frei. Keine Zufallsbelohnungen und kein Echtgeld.</p><div class="rpg-shop">${g.rewards.map(r=>`<button class="rpg-reward" data-theme="${r.id}" ${!g.owned.includes(r.id)&&g.gold<r.price?'disabled':''}><i style="background:${r.color}"></i><b>${r.name}</b><small>${r.desc}</small><span>${g.theme===r.id?'✓ Ausgerüstet':g.owned.includes(r.id)?'Ausrüsten':'🪙 '+r.price}</span></button>`).join('')}</div><p class="rpg-note">Titel wachsen mit deinem Level: Reisender → Wortkundiger (5) → Sprachmagier (10) → Weltenwanderer (20) → Meister der Worte (35) → Leyenda (50).</p></details>
+ <p class="rpg-note">Spielregel: XP gibt es für verschiedene gelöste Aufgaben. Wiederholtes Farmen derselben Aufgabe bringt keine weiteren Tages-XP. Wissen steigt erst bei fälligen Wiederholungen in die nächste Box. Nach einer Runde: kurz aufstehen, dann bewusst weiterlernen.</p>`;
+}
+function wireGame(){
+ $("#rpg-start").onclick=()=>startSession(null);
+ app.querySelectorAll('[data-claim]').forEach(b=>b.onclick=async()=>{b.disabled=true;await api.post('/api/game-action',{action:'claim',id:b.dataset.claim});await renderHome();toast('Questbelohnung erhalten!');});
+ app.querySelectorAll('[data-theme]').forEach(b=>b.onclick=async()=>{b.disabled=true;await api.post('/api/game-action',{action:'theme',id:b.dataset.theme});await renderHome();app.querySelector('.rpg-camp').open=true;});
+}

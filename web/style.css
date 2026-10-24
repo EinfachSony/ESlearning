@@ -269,3 +269,5 @@ details.rule-box .explanation { max-height: 55vh; overflow: auto; font-size: .95
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+.theory-reward{padding:14px;border:1px solid var(--realm,#e79b52);border-radius:12px;background:color-mix(in srgb,var(--realm,#e79b52) 10%,transparent);font-weight:600}.rule .explanation{line-height:1.8}.rule .actions{flex-wrap:wrap}
