@@ -30,6 +30,10 @@ jobs:
           restore-keys: tomas-neural-v1-
       - name: Install voice generator
         run: python -m pip install edge-tts==7.3.1
+      - name: Install audio decoder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
       - name: Generate complete male Argentine recordings
         run: python scripts/generate_audio.py web
       - name: Verify JavaScript
