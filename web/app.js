@@ -189,7 +189,7 @@ async function renderHome() {
     </section>
 
     <p class="tip">Dein Lernfortschritt wird in diesem Browser gespeichert. Beim Löschen der Website-Daten geht er verloren. Mit einer Sicherung kannst du ihn auf ein anderes Gerät übertragen.</p><div class="actions"><button class="btn ghost" id="export-progress">Fortschritt sichern</button><label class="btn ghost">Sicherung laden<input id="import-progress" type="file" accept="application/json" hidden></label></div>
-    <p class="tip">🇦🇷 Argentinisches Spanisch: vos & ustedes. Standard ist die hochwertige Männerstimme Chirp 3 HD Charon. Passende vorproduzierte Aufnahmen spielen direkt; bei neuen Voseo-Sätzen greift die argentinische Browserstimme, falls dein Gerät sie anbietet.</p><div class="footer-settings">
+    <p class="tip">🇦🇷 Argentinisches Spanisch: vos & ustedes. Du hörst Tomás, eine männliche argentinische Neuralstimme. Alle Übungssätze sind als vollständige Aufnahmen vorbereitet und werden während der Frage vorgeladen.</p><div class="footer-settings">
       <label>Tagesziel
         <select id="goal">
           ${[50, 100, 150, 250, 400].map((g) => `<option value="${g}" ${g === stats.daily_goal ? "selected" : ""}>${g} XP</option>`).join("")}
@@ -268,7 +268,7 @@ let S = null; // Sitzungszustand
 
 async function startSession(topic) {
   const data = await api.get("/api/session" + (topic ? `?topic=${encodeURIComponent(topic)}` : ""));
-  if (!overview) overview = await api.get("/api/overview");
+  overview = await api.get("/api/overview");
   updateHud(overview.stats);
   if (!data.items.length) {
     app.innerHTML = `<div class="card"><h2>Nichts zu tun 🎉</h2><p class="muted">Gerade ist nichts fällig. Komm später wieder oder wähle ein Thema.</p><button class="btn" id="back">Zur Übersicht</button></div>`;
