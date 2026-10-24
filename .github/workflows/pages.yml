@@ -23,6 +23,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Restore Argentine voice recordings
+        id: audio-cache
         uses: actions/cache@v4
         with:
           path: web/audio/es-AR-TomasNeural
@@ -31,6 +32,7 @@ jobs:
       - name: Install voice generator
         run: python -m pip install edge-tts==7.3.1
       - name: Install audio decoder
+        if: steps.audio-cache.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg
