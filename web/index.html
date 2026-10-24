@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gramática A1</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇪🇸</text></svg>">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="Zur Übersicht">
+      <span class="brand-mark">¡G!</span>
+      <span class="brand-name">Gramática <span class="lvl" id="lvl">A1</span></span>
+    </button>
+    <div class="hud">
+      <div class="pill" title="Lerntage in Folge"><span class="flame">🔥</span><b id="streak">0</b></div>
+      <div class="pill" title="Erfahrungspunkte gesamt">⭐ <b id="xp">0</b></div>
+      <div class="goal" title="Tagesziel">
+        <svg viewBox="0 0 36 36" class="ring"><circle cx="18" cy="18" r="15.5" class="ring-bg"/><circle cx="18" cy="18" r="15.5" class="ring-fg" id="goal-ring"/></svg>
+        <span id="goal-text">0/150</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <div id="confetti" aria-hidden="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>

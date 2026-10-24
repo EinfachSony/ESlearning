@@ -1,0 +1,5 @@
+target/
+progress.json
+.env
+TTS_Key.txt
+.DS_Store
