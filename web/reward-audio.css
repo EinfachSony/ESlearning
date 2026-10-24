@@ -5,3 +5,5 @@
 #audio-panel .muted{color:#71634f}
 
 .audio-profile{display:grid;gap:8px;margin-top:18px}.audio-profile select{width:100%;padding:10px;border:1px solid #a58e68;border-radius:8px;background:#fffaf1;color:#372a1c}.audio-credit{margin-top:18px;font-size:.85rem}.audio-credit a{color:#735018}#audio-panel .audio-credit p{line-height:1.7}
+
+.city-music{border-top:1px solid #c7b791;margin:22px 0;padding-top:12px}.city-music h3{font-size:1.08rem}.city-music .audio-tests{margin-top:12px}.city-library summary{cursor:pointer;font-weight:600;line-height:1.5}.city-music-card{padding:12px;border:1px solid #d4c7ac;border-radius:10px;margin-top:12px}.city-music-card h4{margin:2px 0}.city-music-card p{font-size:.82rem;margin:8px 0}.city-import{display:inline-block;font-size:.85rem;cursor:pointer}.city-import input{display:block;max-width:100%;font-size:.78rem;margin-top:8px}.city-track{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:10px;font-size:.8rem;overflow-wrap:anywhere}.city-track span{min-width:0}.city-track button{background:transparent;border:1px solid #bda984;border-radius:6px;padding:5px;color:#58462d;cursor:pointer;flex-shrink:0}

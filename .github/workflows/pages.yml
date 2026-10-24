@@ -51,6 +51,8 @@ jobs:
           node scripts/verify_audio_learning.cjs web
           node --check web/wow-sound-bank.js
           node scripts/verify_wow_audio.cjs web
+          node --check web/city-music.js
+          node scripts/verify_city_music.cjs web
           touch web/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
