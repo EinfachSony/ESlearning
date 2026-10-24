@@ -58,10 +58,10 @@ function primeSpeech(text) {
   const clip = new Audio(); clip.preload = "auto"; clip.src = window.gramaticaAudio(text);
   clip.load(); audioPool.set(text, clip);
 }
-function speak(text) {
+function speak(text, rate=1) {
  const url=window.gramaticaAudio(text);if(!url){toast('Für diesen Satz fehlt noch die Aufnahme.');return;}
- const next=audioPool.get(text)||new Audio(url);if(audio===next&&!audio.paused)return;
- if(audio)audio.pause();audio=next;audio.preload='auto';audio.currentTime=0;
+ const next=audioPool.get(text)||new Audio(url);if(audio===next&&!audio.paused){audio.playbackRate=rate;return;}
+ if(audio)audio.pause();audio=next;audio.preload='auto';audio.currentTime=0;audio.playbackRate=rate;
  audio.onerror=()=>toast('Aufnahme konnte nicht geladen werden. Bitte erneut versuchen.');
  audio.play().catch(e=>{if(e.name!=='AbortError')toast('Tippe auf den Lautsprecher, um die Aufnahme zu starten.');});
 }
@@ -813,7 +813,8 @@ document.querySelector("[data-go=home]").onclick = () => {
 await window.gramaticaReady;
 applyTheme(await api.get("/api/game"));
 const hash = location.hash.slice(1);
-if (hash === "mix") startSession(null);
+if (hash === "adventure") openAdventure();
+else if (hash === "mix") startSession(null);
 else if (hash === "sprint") renderSprint();
 else if (hash.startsWith("topic=")) renderTopic(hash.slice(6));
 else renderHome();
@@ -825,13 +826,17 @@ function applyTheme(g) {
 }
 function gameHome(g) {
  const percent=Math.min(100,Math.round((g.xp-g.floor)/(g.next-g.floor)*100));
- return `<section class="rpg-hero"><div class="rpg-eyebrow">DEINE SPRACHREISE · KAMPAGNE A1 · ARGENTINIEN</div><div class="rpg-character"><div class="rpg-avatar">${g.icon}</div><div><span class="rpg-kicker">SONY · ${esc(g.title)}</span><h1>Dein nächstes Abenteuer<br>beginnt mit einem Satz.</h1></div><div class="rpg-level"><b>${g.level}</b><span>LEVEL</span></div></div><div class="rpg-xp"><div><b>${g.xp-g.floor} / ${g.next-g.floor} XP</b><span> bis Level ${g.level+1}</span></div><div class="rpg-track"><i style="width:${percent}%"></i></div></div><button class="btn" id="rpg-start" style="margin-top:18px">⚔️ Expedition starten →</button><div class="rpg-stats"><span>🪙 <b>${g.gold}</b> Gold</span><span>🔮 <b>${g.mastered}/${g.total}</b> langfristig gefestigt</span><span>🏕️ <b>${g.days}</b> Lerntage</span></div></section>
+ return `<section class="rpg-hero"><div class="rpg-eyebrow">DEINE SPRACHREISE · KAMPAGNE A1 · ARGENTINIEN</div><div class="rpg-character"><div class="rpg-avatar">${g.icon}</div><div><span class="rpg-kicker">SONY · ${esc(g.title)}</span><h1>Dein nächstes Abenteuer<br>beginnt mit einem Satz.</h1></div><div class="rpg-level"><b>${g.level}</b><span>LEVEL</span></div></div><div class="rpg-xp"><div><b>${g.xp-g.floor} / ${g.next-g.floor} XP</b><span> bis Level ${g.level+1}</span></div><div class="rpg-track"><i style="width:${percent}%"></i></div></div><button class="btn" id="rpg-start" style="margin-top:18px">🗺️ Südamerika-Expedition →</button><div class="rpg-stats"><span>🪙 <b>${g.gold}</b> Gold</span><span>🔮 <b>${g.mastered}/${g.total}</b> langfristig gefestigt</span><span>🏕️ <b>${g.days}</b> Lerntage</span></div></section>
+ <section class="adventure-invite"><h2>🗺️ Deine Minigames warten</h2><p>Sechs Reiseorte, Gespräche mit Entscheidungen, Bosskämpfe, Funkmissionen, Satzschmiede, Lagerverteidigung und Magierprüfungen.</p><button class="btn ghost" id="adventure-launch">Karte, Talente & Sammlung öffnen →</button></section>
  <section class="rpg-section"><div class="rpg-heading"><h2>Dein Questlog</h2><span>Jeden Tag neue Ziele · kein Verlust bei Pausen</span></div><div class="rpg-quests">${g.quests.map(q=>`<article class="rpg-quest"><div class="quest-icon">${q.icon}</div><h3>${q.name}</h3><p>${q.desc}</p><div class="rpg-track"><i style="width:${q.count/q.goal*100}%"></i></div><div class="quest-bottom"><span>${q.count}/${q.goal} · 🪙 ${q.reward}</span><button class="btn ghost" data-claim="${q.id}" ${q.claimed||q.count<q.goal?'disabled':''}>${q.claimed?'Abgeholt':q.count>=q.goal?'Belohnung holen':'In Arbeit'}</button></div></article>`).join('')}</div></section>
  <details class="rpg-camp"><summary>🏕️ Lager öffnen <span>Erfolge, Titel & Belohnungen</span></summary><h2>Deine Trophäen</h2><div class="rpg-trophies">${g.achievements.map(a=>`<div class="rpg-trophy ${a.unlocked?'earned':''}"><span>${a.icon}</span><b>${a.name}</b><small>${a.desc}</small><em>${a.unlocked?'Freigeschaltet':'🪙 '+a.gold+' Gold'}</em></div>`).join('')}</div><h2>Wähle dein Reich</h2><p class="muted">Gold schaltet dauerhafte Designs frei. Keine Zufallsbelohnungen und kein Echtgeld.</p><div class="rpg-shop">${g.rewards.map(r=>`<button class="rpg-reward" data-theme="${r.id}" ${!g.owned.includes(r.id)&&g.gold<r.price?'disabled':''}><i style="background:${r.color}"></i><b>${r.name}</b><small>${r.desc}</small><span>${g.theme===r.id?'✓ Ausgerüstet':g.owned.includes(r.id)?'Ausrüsten':'🪙 '+r.price}</span></button>`).join('')}</div><p class="rpg-note">Titel wachsen mit deinem Level: Reisender → Wortkundiger (5) → Sprachmagier (10) → Weltenwanderer (20) → Meister der Worte (35) → Leyenda (50).</p></details>
  <p class="rpg-note">Spielregel: XP gibt es für verschiedene gelöste Aufgaben. Wiederholtes Farmen derselben Aufgabe bringt keine weiteren Tages-XP. Wissen steigt erst bei fälligen Wiederholungen in die nächste Box. Nach einer Runde: kurz aufstehen, dann bewusst weiterlernen.</p>`;
 }
 function wireGame(){
- $("#rpg-start").onclick=()=>startSession(null);
+ $("#rpg-start").onclick=()=>openAdventure();
+ const launch=$("#adventure-launch");if(launch)launch.onclick=()=>openAdventure();
  app.querySelectorAll('[data-claim]').forEach(b=>b.onclick=async()=>{b.disabled=true;await api.post('/api/game-action',{action:'claim',id:b.dataset.claim});await renderHome();toast('Questbelohnung erhalten!');});
  app.querySelectorAll('[data-theme]').forEach(b=>b.onclick=async()=>{b.disabled=true;await api.post('/api/game-action',{action:'theme',id:b.dataset.theme});await renderHome();app.querySelector('.rpg-camp').open=true;});
 }
+
+async function openAdventure(id,topic){view="adventure";if(SP?.timer)clearInterval(SP.timer);await window.AdventureUI.open({app,api,esc,speak,primeSpeech,updateHud,toast,confetti,onHome:renderHome},{id,topic});}

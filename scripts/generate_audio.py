@@ -14,6 +14,16 @@ for t in content['topics']:
   if i['type'] in ('cloze','choice') and '___' in i['prompt']:
    text=re.sub(r' \([^)]*\)','',i['prompt'].replace('___',text).replace(' → ', ', '),count=1)
   texts.add(text)
+# Include NPC dialogue and model replies from the adventure campaign.
+def visit(node):
+ if isinstance(node,dict):
+  if node.get('spoken'):texts.add(node['spoken'])
+  if node.get('answers'):texts.add(node['answers'][0])
+  for value in node.values():visit(value)
+ elif isinstance(node,list):
+  for value in node:visit(value)
+adventure=ROOT/'adventure.json'
+if adventure.exists():visit(json.loads(adventure.read_text()))
 mapping={text:hashlib.sha256((VOICE+':'+text).encode()).hexdigest()[:24] for text in sorted(texts)}
 (ROOT/'audio-map.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2))
 sem=asyncio.Semaphore(3)

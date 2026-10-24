@@ -1,0 +1,337 @@
+{
+  "regions": [
+    {
+      "id": "buenos-aires",
+      "name": "Buenos Aires",
+      "icon": "🏙️",
+      "npc": "Lucía",
+      "portrait": "🧑‍🍳",
+      "place": "Café an der Plaza",
+      "relic": "Kompass des Ankommens",
+      "topics": [
+        "art",
+        "ser"
+      ],
+      "questions": [
+        {
+          "spoken": "¡Hola! ¿Cómo te llamás?",
+          "prompt": "Stell dich mit deinem Namen Sony oder Soner vor.",
+          "answers": [
+            "Me llamo Sony.",
+            "Soy Sony.",
+            "Me llamo Soner.",
+            "Soy Soner."
+          ],
+          "explain": "Me llamo … oder Soy … sind passende Vorstellungen."
+        },
+        {
+          "spoken": "¿Qué querés tomar?",
+          "prompt": "Bestelle höflich ein Wasser oder einen Kaffee.",
+          "answers": [
+            "Quiero agua, por favor.",
+            "Quiero un agua, por favor.",
+            "Quiero un café, por favor.",
+            "Quisiera un café.",
+            "Quisiera agua.",
+            "¿Me das agua, por favor?",
+            "¿Me das un café, por favor?"
+          ],
+          "explain": "Querés ist die argentinische vos-Form von querer.",
+          "branch": "drink"
+        },
+        {
+          "spoken": "¿Agua fría o natural?",
+          "prompt": "Sag, dass du kaltes Wasser möchtest.",
+          "answers": [
+            "Quiero agua fría.",
+            "Agua fría, por favor.",
+            "Quisiera agua fría."
+          ],
+          "explain": "Agua ist feminin: agua fría. Der Artikel ist im Singular trotzdem el."
+        }
+      ],
+      "coffee": {
+        "spoken": "¿Con leche o solo?",
+        "prompt": "Sag, dass du einen Kaffee mit Milch möchtest.",
+        "answers": [
+          "Quiero un café con leche.",
+          "Un café con leche, por favor.",
+          "Quisiera un café con leche."
+        ],
+        "explain": "Con leche heißt mit Milch. Dein bestelltes Getränk verändert dieses Gespräch."
+      }
+    },
+    {
+      "id": "rosario",
+      "name": "Rosario",
+      "icon": "🚲",
+      "npc": "Nico",
+      "portrait": "🧑‍🔧",
+      "place": "Die Fahrradwerkstatt",
+      "relic": "Speiche der Ausdauer",
+      "topics": [
+        "ar",
+        "erir"
+      ],
+      "questions": [
+        {
+          "spoken": "¡Buenas! ¿Qué necesitás?",
+          "prompt": "Sag, dass du dein Fahrrad reparieren musst.",
+          "answers": [
+            "Tengo que reparar mi bicicleta.",
+            "Tengo que reparar mi bici.",
+            "Necesito reparar mi bicicleta.",
+            "Necesito reparar mi bici."
+          ],
+          "explain": "Tener que plus Infinitiv drückt eine Notwendigkeit aus."
+        },
+        {
+          "spoken": "¿Tenés una bicicleta?",
+          "prompt": "Bejahe und sage in einem Satz, dass du ein Fahrrad hast.",
+          "answers": [
+            "Sí, tengo una bicicleta.",
+            "Sí, tengo una bici."
+          ],
+          "explain": "Tenés gehört zu vos, tengo zu yo."
+        },
+        {
+          "spoken": "¿Dónde está tu bicicleta?",
+          "prompt": "Sag, dass dein Fahrrad hier ist.",
+          "answers": [
+            "Mi bicicleta está acá.",
+            "Mi bicicleta está aquí.",
+            "Mi bici está acá.",
+            "Mi bici está aquí."
+          ],
+          "explain": "Für den Standort brauchst du estar; acá und aquí sind beide möglich."
+        }
+      ]
+    },
+    {
+      "id": "mendoza",
+      "name": "Mendoza",
+      "icon": "⛰️",
+      "npc": "Martín",
+      "portrait": "🧑‍💼",
+      "place": "Eine Nacht im Hostel",
+      "relic": "Schlüssel des Reisenden",
+      "topics": [
+        "ten",
+        "preg"
+      ],
+      "questions": [
+        {
+          "spoken": "¡Bienvenido! ¿Qué necesitás?",
+          "prompt": "Sag, dass du ein Zimmer für eine Nacht brauchst.",
+          "answers": [
+            "Necesito una habitación para una noche.",
+            "Necesito un cuarto para una noche.",
+            "Quiero una habitación para una noche."
+          ],
+          "explain": "Habitación und cuarto können beide Zimmer bedeuten."
+        },
+        {
+          "spoken": "Tenemos una habitación libre.",
+          "prompt": "Frage, wie viel das Zimmer kostet.",
+          "answers": [
+            "¿Cuánto cuesta la habitación?",
+            "¿Cuánto cuesta el cuarto?",
+            "¿Cuánto cuesta?"
+          ],
+          "explain": "Cuánto fragt nach einer Menge oder einem Preis. Costar hat hier den Stammwechsel cuesta."
+        },
+        {
+          "spoken": "¿Querés descansar?",
+          "prompt": "Bejahe und sage, dass du schlafen musst.",
+          "answers": [
+            "Sí, tengo que dormir.",
+            "Sí, necesito dormir."
+          ],
+          "explain": "Tengo que dormir und necesito dormir passen beide in diese Situation."
+        }
+      ]
+    },
+    {
+      "id": "bariloche",
+      "name": "Bariloche",
+      "icon": "🏞️",
+      "npc": "Valentina",
+      "portrait": "🧑‍🍳",
+      "place": "Die Taverne am See",
+      "relic": "Becher der Gastfreundschaft",
+      "topics": [
+        "est",
+        "hay",
+        "prep"
+      ],
+      "questions": [
+        {
+          "spoken": "¿Cómo estás después del viaje?",
+          "prompt": "Sag, dass du Hunger hast.",
+          "answers": [
+            "Tengo hambre.",
+            "Yo tengo hambre."
+          ],
+          "explain": "Hunger wird mit tener ausgedrückt."
+        },
+        {
+          "spoken": "¿Qué querés tomar?",
+          "prompt": "Bestelle höflich einen Kaffee mit Milch.",
+          "answers": [
+            "Un café con leche, por favor.",
+            "Quiero un café con leche, por favor.",
+            "Quisiera un café con leche."
+          ],
+          "explain": "Con bedeutet mit; leche ist Milch."
+        },
+        {
+          "spoken": "¿Te gusta este lugar?",
+          "prompt": "Bejahe und sage, dass dir dieser Ort gefällt.",
+          "answers": [
+            "Sí, me gusta este lugar.",
+            "Sí, este lugar me gusta."
+          ],
+          "explain": "Der gefallende Ort ist bei gustar das grammatische Subjekt."
+        }
+      ]
+    },
+    {
+      "id": "salta",
+      "name": "Salta",
+      "icon": "🌵",
+      "npc": "Ana",
+      "portrait": "🧑‍🌾",
+      "place": "Wasser für die Weiterfahrt",
+      "relic": "Feldflasche der Weitsicht",
+      "topics": [
+        "refl",
+        "gus"
+      ],
+      "questions": [
+        {
+          "spoken": "¿Te puedo ayudar?",
+          "prompt": "Frage, wo der Park ist.",
+          "answers": [
+            "¿Dónde está el parque?",
+            "¿Dónde queda el parque?"
+          ],
+          "explain": "Estar und quedar können hier den Standort ausdrücken."
+        },
+        {
+          "spoken": "Está cerca. ¿Adónde vas?",
+          "prompt": "Sag, dass du in den Park gehst.",
+          "answers": [
+            "Voy al parque.",
+            "Yo voy al parque."
+          ],
+          "explain": "A und el verschmelzen zu al."
+        },
+        {
+          "spoken": "Hay agua potable en el parque.",
+          "prompt": "Frage, ob du deine Flasche füllen darfst.",
+          "answers": [
+            "¿Puedo llenar mi botella?",
+            "¿Puedo rellenar mi botella?"
+          ],
+          "explain": "Puedo plus Infinitiv: ich kann oder darf etwas tun."
+        }
+      ]
+    },
+    {
+      "id": "ushuaia",
+      "name": "Ushuaia",
+      "icon": "🧊",
+      "npc": "Tomás",
+      "portrait": "🧑‍🚀",
+      "place": "Am Ende der Welt",
+      "relic": "Stern der Sprachreise",
+      "topics": [
+        "fut",
+        "stem",
+        "irr"
+      ],
+      "questions": [
+        {
+          "spoken": "¿Qué vas a hacer mañana?",
+          "prompt": "Sag, dass du morgen reisen wirst.",
+          "answers": [
+            "Mañana voy a viajar.",
+            "Voy a viajar mañana.",
+            "Yo voy a viajar mañana."
+          ],
+          "explain": "Die nahe Zukunft besteht aus ir a plus Infinitiv."
+        },
+        {
+          "spoken": "¿Qué te gusta hacer?",
+          "prompt": "Sag, dass du gern mit dem Fahrrad reist.",
+          "answers": [
+            "Me gusta viajar en bicicleta.",
+            "Me gusta viajar en bici.",
+            "A mí me gusta viajar en bicicleta."
+          ],
+          "explain": "Vor einem Infinitiv steht bei gustar die Singularform gusta."
+        },
+        {
+          "spoken": "¿Y qué vamos a hacer juntos?",
+          "prompt": "Sag, dass wir Spanisch lernen werden.",
+          "answers": [
+            "Vamos a aprender español.",
+            "Nosotros vamos a aprender español.",
+            "Vamos a estudiar español."
+          ],
+          "explain": "Vamos a plus Infinitiv beschreibt unseren Plan."
+        }
+      ]
+    }
+  ],
+  "talents": [
+    {
+      "id": "grammar-guard",
+      "branch": "Grammatik",
+      "name": "Runenschild",
+      "desc": "Ein zusätzlicher Schutzpunkt in Bosskämpfen.",
+      "icon": "🛡️",
+      "requires": null
+    },
+    {
+      "id": "grammar-clue",
+      "branch": "Grammatik",
+      "name": "Wissensfunke",
+      "desc": "Der erste Tipp in Satzschmiede und Magierprüfung senkt die Sterne nicht.",
+      "icon": "📖",
+      "requires": "grammar-guard"
+    },
+    {
+      "id": "hearing-slow",
+      "branch": "Hörverständnis",
+      "name": "Zeitlupe",
+      "desc": "Schaltet langsame Wiedergabe in Funkmissionen frei.",
+      "icon": "🎧",
+      "requires": null
+    },
+    {
+      "id": "hearing-guard",
+      "branch": "Hörverständnis",
+      "name": "Ruhiges Ohr",
+      "desc": "Ein zusätzlicher Schutzpunkt in Funkmissionen.",
+      "icon": "📻",
+      "requires": "hearing-slow"
+    },
+    {
+      "id": "talk-clue",
+      "branch": "Gespräche",
+      "name": "Wortfinder",
+      "desc": "Der erste Tipp in einem Gespräch senkt die Sterne nicht.",
+      "icon": "💬",
+      "requires": null
+    },
+    {
+      "id": "talk-guard",
+      "branch": "Gespräche",
+      "name": "Souverän",
+      "desc": "Ein zusätzlicher Schutzpunkt in Gesprächen.",
+      "icon": "🤝",
+      "requires": "talk-clue"
+    }
+  ]
+}

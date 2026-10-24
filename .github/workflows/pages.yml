@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: web/audio/es-AR-TomasNeural
-          key: tomas-neural-v1-${{ hashFiles('web/content.json', 'scripts/generate_audio.py') }}
+          key: tomas-neural-v1-${{ hashFiles('web/content.json', 'web/adventure.json', 'scripts/generate_audio.py') }}
           restore-keys: tomas-neural-v1-
       - name: Install voice generator
         run: python -m pip install edge-tts==7.3.1 imageio-ffmpeg==0.6.0
@@ -38,6 +38,10 @@ jobs:
           node --check web/app.js
           node --check web/local-api.js
           node --check web/rpg.js
+          node --check web/adventure.js
+          node --check web/adventure-ui.js
+          node scripts/verify_learning.cjs web
+          node scripts/verify_adventure.cjs web
           touch web/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

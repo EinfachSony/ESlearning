@@ -13,3 +13,13 @@ Die männliche argentinische Neuralstimme es-AR-TomasNeural wird beim Build für
 ## Verzeichnisstruktur
 
 web/ enthält die GitHub-Pages-Fassung, scripts/ den Audiogenerator, source/ den ursprünglichen Rust-Quellcode der hochgeladenen Version 0. Pages benötigt keinen Rust-Server und keinen privaten API-Schlüssel.
+
+## Minigames und Expedition
+
+Der Einstieg erfolgt über die Südamerika-Expedition oder #adventure. Sechs Orte bilden eine fortlaufende Argentinien-Kampagne mit je einem Gespräch und einem dreiphasigen Bosskampf (zwölf Missionen). Im Trainingslager gibt es Funkmissionen, Satzschmiede, Lagerverteidigung und Magierprüfung. Die Prüfung setzt ein vollständig gelesenes Theoriekapitel voraus. Alle Antworten werden getippt.
+
+Gespräche haben mehrere explizit akzeptierte Formulierungen, einschließlich optionaler Subjektpronomen. Buenos Aires hat einen Getränke-Zweig mit unterschiedlicher Folgefrage. Die Auswertung verwendet redaktionelle Musterantworten, keine generative KI; sie erkennt daher nicht jede mögliche korrekte Paraphrase.
+
+Erstabschlüsse der Reise geben XP, Gold, einen Talentpunkt und ein festes Erinnerungsstück. Sechs Talente gewähren zusätzliche Schutzpunkte, langsameres Audio oder einen ersten Tipp ohne Sternenabzug. Wiederholungen können die Bestwertung verbessern; Reise-Erstbelohnungen werden nicht doppelt vergeben. Trainingsbelohnungen sind je Spielart einmal pro Tag verfügbar. Eingebundene Grammatikaufgaben aktualisieren zugleich die bestehende Wiederholungsplanung. Aktive Runde, Sammlung, Ausrüstung und Talente werden mit dem bestehenden Fortschritt lokal gespeichert und exportiert.
+
+Prüfungen: node scripts/verify_learning.cjs web und node scripts/verify_adventure.cjs web. Der Pages-Workflow führt beide aus und erzeugt die neuen Dialogaufnahmen mit derselben männlichen argentinischen Neuralstimme.
